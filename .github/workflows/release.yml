@@ -25,5 +25,5 @@ jobs:
         tag_name: ${{ github.run_id }} 
         release_name: Latest Version
         body: |
-            [Unified Test API Documentation](https://accsp-software.github.io/spec-unified-api-test/)
+            [Unified Prod API Documentation](https://accsp-software.github.io/spec-unified-api-prod/)
             -  ${{ github.event.head_commit.message }}
