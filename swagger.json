@@ -1572,7 +1572,8 @@
                     "p_notif_type",
                     "p_trip_type",
                     "p_start_time",
-                    "p_start_date"
+                    "p_start_date",
+                    "p_departure_port"
                 ],
                 "type": "object",
                 "properties": {
