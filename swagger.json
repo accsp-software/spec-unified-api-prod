@@ -5094,8 +5094,7 @@
                     "p_notif_type",
                     "p_trip_type",
                     "p_start_time",
-                    "p_start_date",
-                    "p_departure_port"
+                    "p_start_date"
                 ],
                 "type": "object",
                 "properties": {
@@ -5124,10 +5123,6 @@
                         "description": "trip start time in format HHMM.",
                         "type": "string"
                     },
-                    "p_departure_port": {
-                        "description": "port code for the departing (starting) port.",
-                        "type": "string"
-                    },
                     "p_arrival_port": {
                         "description": "port code for the arrival (ending) port.",
                         "type": "string"
@@ -5151,7 +5146,6 @@
                     "p_trip_type": "C",
                     "p_start_date": "05/30/2020",
                     "p_start_time": "1845",
-                    "p_departure_port": "224109",
                     "p_arrival_port": "222109",
                     "p_notif_type": "6",
                     "partner_attributes": [
