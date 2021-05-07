@@ -5117,7 +5117,7 @@
                     },
                     "p_start_date": {
                         "format": "date",
-                        "description": "trip start date in format YYYY-MM-DD.",
+                        "description": "trip start date in format MM/DD/YYYY.",
                         "type": "string"
                     },
                     "p_start_time": {
@@ -5149,7 +5149,7 @@
                     "p_vessel_cgn": "",
                     "p_vessel_srn": "NH0258BA",
                     "p_trip_type": "C",
-                    "p_start_date": "2020-05-30",
+                    "p_start_date": "05/30/2020",
                     "p_start_time": "1845",
                     "p_departure_port": "224109",
                     "p_arrival_port": "222109",
