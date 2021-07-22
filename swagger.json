@@ -1,19 +1,19 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Unified SAFIS API -Prod",
-        "version": "1.0.60",
+        "title": "Unified SAFIS API -Test",
+        "version": "1.0.66",
         "description": "**Overview**\n\nThis API is used by remote applications   to communicate with the SAFIS backend database server. It is not intended for any other purpose. This document is intended as a programmer’s reference manual. It is used by both application developers who build a front-end, and the programmers who maintain this   API back-end. \n\nTo request an API key, please contact us. ",
         "contact": {
             "email": "support@accsp.org"
         },
         "x-logo": {
-            "url": "https://raw.githubusercontent.com/accsp-software/spec-unified-api-prod/master/docs/accsp_logo.jpg"
+            "url": "https://raw.githubusercontent.com/accsp-software/spec-unified-api-test/master/docs/accsp_logo.jpg"
         }
     },
     "servers": [
         {
-            "url": "https://safis.accsp.org/safis_prod/safis_prod/api",
+            "url": "https://safis.accsp.org/safis_test/safist/api",
             "description": ""
         }
     ],
@@ -946,58 +946,6 @@
                     "timestamp": "20191225131755"
                 }
             },
-            "locations": {
-                "title": "Root Type for locations",
-                "description": "",
-                "required": [
-                    "p_supplier_trip_id",
-                    "locations"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_supplier_trip_id": {
-                        "description": "unique trip id given by the requesting entity",
-                        "type": "string"
-                    },
-                    "p_trip_id": {
-                        "description": "ACCSP trip id IF known. ",
-                        "type": "string"
-                    },
-                    "p_vendor_id": {
-                        "description": "vendor id of the device sending records",
-                        "type": "string"
-                    },
-                    "p_vessel_cgn": {
-                        "description": "US Coast Guard Number/Hull Nmber",
-                        "type": "string"
-                    },
-                    "locations": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/location"
-                        }
-                    }
-                },
-                "example": {
-                    "p_supplier_trip_id": "55590000003",
-                    "p_trip_id": "900000003",
-                    "p_vendor_id": "1233345",
-                    "p_vessel_cgn": "MS4564AX",
-                    "locations": [
-                        {
-                            "latitude": "43.31238",
-                            "longitude": "-70.11428",
-                            "timestamp": "20191225131755"
-                        },
-                        {
-                            "latitude": "42.32238",
-                            "longitude": "-70.11628",
-                            "timestamp": "20191225131845"
-                        }
-                    ]
-                }
-            },
             "trip_locations_response": {
                 "title": "Root Type for trip_locations_response",
                 "description": "",
@@ -1563,161 +1511,6 @@
                     "description": "User: Active Permit Count:0"
                 }
             },
-            "gear_attributes_response": {
-                "title": "GEAR_ATTRIBUTES",
-                "description": "GEAR_ATTRIBUTES",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "attribute_code": {
-                                    "format": "int32",
-                                    "description": "unique attribute code/id",
-                                    "type": "integer"
-                                },
-                                "attribute_name": {
-                                    "description": "name of the attribute",
-                                    "type": "string"
-                                },
-                                "attribute_desc": {
-                                    "description": "help text of the attribute",
-                                    "type": "string"
-                                },
-                                "category_code": {
-                                    "description": "category of the gear",
-                                    "type": "string"
-                                },
-                                "gear_code": {
-                                    "description": "gear code value to be returned where gear is requested.",
-                                    "type": "string"
-                                },
-                                "options": {
-                                    "description": "static list of options for this attribute",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object"
-                                    }
-                                },
-                                "order_seq": {
-                                    "format": "int32",
-                                    "description": "numerical order of listing relative to other attributes",
-                                    "type": "integer"
-                                },
-                                "comm_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_charter_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_hb_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "rec_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "type": {
-                                    "description": "format of the attribute",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the request ",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "human readable description of the result status",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "attribute_code": 142,
-                            "attribute_name": "Number of traps",
-                            "attribute_desc": "Number of traps",
-                            "category_code": "160",
-                            "gear_code": "160",
-                            "order_seq": 83,
-                            "comm_flag": "R",
-                            "for_hire_charter_flag": "N",
-                            "for_hire_hb_flag": "N",
-                            "rec_flag": "N",
-                            "type": "NUMBER (38,0)"
-                        },
-                        {
-                            "attribute_code": 1321,
-                            "attribute_name": "LMA",
-                            "attribute_desc": "Lobster Management Area",
-                            "category_code": "160",
-                            "gear_code": "160",
-                            "options": [
-                                {
-                                    "1": "LMA 1"
-                                },
-                                {
-                                    "2": "LMA 2"
-                                },
-                                {
-                                    "3": "LMA 3"
-                                },
-                                {
-                                    "4": "LMA 4"
-                                },
-                                {
-                                    "5": "LMA 5"
-                                },
-                                {
-                                    "6": "LMA 6"
-                                },
-                                {
-                                    "O": "OCC"
-                                }
-                            ],
-                            "order_seq": 25,
-                            "comm_flag": "R",
-                            "for_hire_charter_flag": "N",
-                            "for_hire_hb_flag": "N",
-                            "rec_flag": "N",
-                            "type": "STRING"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "2 Gear Attribute(s) Returned"
-                }
-            },
             "gears_list_response": {
                 "title": "GEARS",
                 "description": "GEARS",
@@ -1943,111 +1736,6 @@
                     "description": "1 Attribute(s) Returned"
                 }
             },
-            "disposition_response": {
-                "title": "DISPOSITION",
-                "description": "disposition response",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "description": "disposition code. Expected value by trips_upload  and reports_upload",
-                                    "type": "string"
-                                },
-                                "desc": {
-                                    "description": "name of the disposition",
-                                    "type": "string"
-                                },
-                                "category_code": {
-                                    "description": "category code of disposition",
-                                    "type": "string"
-                                },
-                                "category_name": {
-                                    "description": "category name of disposition",
-                                    "type": "string"
-                                },
-                                "comm_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_ch_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_hb_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "rec_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of request",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "human readable description of request status",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "code": "001",
-                            "desc": "General : Food",
-                            "category_code": "000",
-                            "category_name": "General Utilization",
-                            "comm_flag": "N",
-                            "for_hire_ch_flag": "N",
-                            "for_hire_hb_flag": "N",
-                            "rec_flag": "N"
-                        },
-                        {
-                            "code": "001",
-                            "desc": "General : Food",
-                            "category_code": "000",
-                            "category_name": "General Utilization",
-                            "comm_flag": "Y",
-                            "for_hire_ch_flag": "Y",
-                            "for_hire_hb_flag": "N",
-                            "rec_flag": "N"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "Disposition count: 2"
-                }
-            },
             "trips_download_response": {
                 "title": "Root Type for trips_download_response",
                 "description": "",
@@ -2215,137 +1903,6 @@
                     "total_gear_in_water": "1",
                     "fishing_hours": "3",
                     "hours_days_flag": "H"
-                }
-            },
-            "dealer_report": {
-                "title": "Root Type for dealer_report",
-                "description": "",
-                "required": [
-                    "landings",
-                    "date_of_pur",
-                    "cf_partner_id",
-                    "cf_license_nbr",
-                    "landing_date",
-                    "port",
-                    "supplier_dr_id"
-                ],
-                "type": "object",
-                "properties": {
-                    "state_reg_nbr": {
-                        "description": "State Registration number of vessel. If no vessel used, provide 'FROM_SHORE'. Required to provide either coast_guard_nbr or state_reg_nbr.",
-                        "type": "string"
-                    },
-                    "landing_date": {
-                        "format": "date",
-                        "description": "Landing Date of report. Format MM/DD/YYYY",
-                        "type": "string"
-                    },
-                    "time_landed": {
-                        "type": "string"
-                    },
-                    "date_of_pur": {
-                        "format": "date",
-                        "description": "Purchase date. Format MM/DD/YYYY",
-                        "type": "string"
-                    },
-                    "dea_license_nbr": {
-                        "description": "Permit/License Number of Dealer in use",
-                        "type": "string"
-                    },
-                    "dea_partner_id": {
-                        "description": "4 character identifier of issuing agency of dealer permit in use",
-                        "type": "string"
-                    },
-                    "supplier_dr_id": {
-                        "description": "unique report id given by the caller. Only used to communicate errors and updates.",
-                        "type": "string"
-                    },
-                    "cf_license_nbr": {
-                        "description": "Permit/License Number of fisherman purchased from.",
-                        "type": "string"
-                    },
-                    "cf_partner_id": {
-                        "description": "4 character identifier of issuing agency of fisherman permit in use",
-                        "type": "string"
-                    },
-                    "submit_method": {
-                        "type": "string"
-                    },
-                    "port": {
-                        "description": "Landing Port of Vessel",
-                        "type": "string"
-                    },
-                    "trip_start_date": {
-                        "type": "string"
-                    },
-                    "trip_start_time": {
-                        "type": "string"
-                    },
-                    "landings": {
-                        "description": "Collection of landings in this dealer report.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/landing"
-                        }
-                    }
-                },
-                "example": {
-                    "state_reg_nbr": "MS9999",
-                    "landing_date": "02/01/2017",
-                    "time_landed": "1618",
-                    "date_of_pur": "02/01/2017",
-                    "dea_license_nbr": "MADEALER",
-                    "dea_partner_id": "0003",
-                    "supplier_dr_id": "22882-2K1-U-9MUPC",
-                    "cf_license_nbr": "22882",
-                    "cf_partner_id": "0003",
-                    "submit_method": "D",
-                    "port": "240513",
-                    "catch_source": "S",
-                    "trip_start_date": "01/31/2017",
-                    "trip_start_time": "1018",
-                    "landings": [
-                        {
-                            "species_itis": "079872",
-                            "disposition_code": "001",
-                            "gear_code": "620",
-                            "grade_code": "02",
-                            "unit_measure": "CN",
-                            "reported_quantity": "2500",
-                            "price": ".65",
-                            "market_code": "UN",
-                            "area_fished": "514",
-                            "sub_area_fished": "0057",
-                            "local_area_code": "CCB42",
-                            "catch_source": "A",
-                            "temp_unit": "F",
-                            "gear_quantity": "1",
-                            "in_state": "MA",
-                            "total_gear_in_water": "1",
-                            "fishing_hours": "3",
-                            "hours_days_flag": "H"
-                        },
-                        {
-                            "species_itis": "079872",
-                            "disposition_code": "001",
-                            "gear_code": "620",
-                            "grade_code": "02",
-                            "unit_measure": "CN",
-                            "reported_quantity": "3500",
-                            "price": ".5",
-                            "market_code": "SH",
-                            "area_fished": "514",
-                            "sub_area_fished": "0057",
-                            "local_area_code": "CCB42",
-                            "catch_source": "A",
-                            "temp_unit": "F",
-                            "gear_quantity": "1",
-                            "in_state": "MA",
-                            "total_gear_in_water": "1",
-                            "fishing_hours": "3",
-                            "hours_days_flag": "H"
-                        }
-                    ]
                 }
             },
             "dealer_reports_upload_request": {
@@ -2913,14 +2470,21 @@
                 "example": {
                     "row": [
                         {
-                            "License_NBR": "200370",
-                            "Endorsement_Type": "SHELL",
+                            "License_NBR": "13037",
+                            "First_Name": "JOHN",
+                            "Middle_Initial": "E",
+                            "Last_Name": "APPLE",
+                            "Endorsement_Type": "SUH",
+                            "Endorsement_Number": "230P",
                             "In_Use": "Y"
                         },
                         {
-                            "License_NBR": "40351",
-                            "Endorsement_Type": "SHELL",
-                            "In_Use": "N"
+                            "License_NBR": "12345",
+                            "First_Name": "HAN",
+                            "Last_Name": "SOLO",
+                            "Endorsement_Type": "SUB",
+                            "Endorsement_Number": "160K",
+                            "In_Use": "Y"
                         }
                     ],
                     "status": "OK",
@@ -3061,236 +2625,6 @@
                     ],
                     "status": "OK",
                     "description": "Species allowed by endorsement(s): 1"
-                }
-            },
-            "vessels_on_license_response": {
-                "title": "vessels_on_license",
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "Vessel_ID": {
-                                    "description": "unique identifier of vessel in SAFIS",
-                                    "type": "string"
-                                },
-                                "Name": {
-                                    "description": "vessel name",
-                                    "type": "string"
-                                },
-                                "State_Reg": {
-                                    "description": "state registration number of vessel",
-                                    "type": "string"
-                                },
-                                "License_NBR": {
-                                    "type": "string"
-                                },
-                                "In_Use": {
-                                    "description": "flag indicating whether record is active",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the request attempt",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "Human readable description of the status given.",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "Vessel_ID": "314544",
-                            "Name": "ROCKIN ROBIN",
-                            "State_Reg": "MS8609BL",
-                            "License_NBR": "177095",
-                            "In_Use": "Y"
-                        },
-                        {
-                            "Vessel_ID": "305727",
-                            "Name": "ANNIES SONG",
-                            "State_Reg": "MS3314BJ",
-                            "License_NBR": "176219",
-                            "In_Use": "N"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "Vessels assigned for Fisherman endorsement(s): 2"
-                }
-            },
-            "partner_managed_species_response": {
-                "title": "PARTNER_MANAGED_SPECIES",
-                "description": "",
-                "required": [
-                    "status"
-                ],
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "attribute_code": {
-                                    "format": "int32",
-                                    "description": "unique attribute code/id",
-                                    "type": "integer"
-                                },
-                                "attribute_name": {
-                                    "description": "name of attribute",
-                                    "type": "string"
-                                },
-                                "attribute_desc": {
-                                    "description": "accompanying help text",
-                                    "type": "string"
-                                },
-                                "species_itis": {
-                                    "description": "ITIS code of species",
-                                    "type": "string"
-                                },
-                                "type": {
-                                    "description": "format of attribute.",
-                                    "enum": [
-                                        "NUMBER*",
-                                        "STRING",
-                                        "DATE",
-                                        "TIMESTAMP"
-                                    ],
-                                    "type": "string"
-                                },
-                                "list_type": {
-                                    "description": "denotes whether list returned is static (S) or dynamic(D)",
-                                    "enum": [
-                                        "S",
-                                        "D"
-                                    ],
-                                    "type": "string"
-                                },
-                                "options": {
-                                    "description": "JSON key-value pairs showing the return and display value of static list items respectively",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object"
-                                    }
-                                },
-                                "order_seq": {
-                                    "format": "int32",
-                                    "description": "display order of attribute relative to others",
-                                    "type": "integer"
-                                },
-                                "attribute_count": {
-                                    "description": "expected number of values returned. default is Single(S). Multiple (M).",
-                                    "enum": [
-                                        "S",
-                                        "M"
-                                    ],
-                                    "type": "string"
-                                },
-                                "comm_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_charter_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "for_hire_hb_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                },
-                                "rec_flag": {
-                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
-                                    "enum": [
-                                        "R",
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the request",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "human readable description of the result status",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "attribute_code": 1212,
-                            "attribute_name": "Length Qualifier",
-                            "attribute_desc": "How was the length taken? (measured or estimated)",
-                            "species_itis": "172421",
-                            "type": "STRING",
-                            "list_type": "S",
-                            "options": [
-                                {
-                                    "M": "Measured"
-                                },
-                                {
-                                    "E": "Estimated"
-                                },
-                                {
-                                    "U": "Unknown"
-                                }
-                            ],
-                            "order_seq": 6,
-                            "attribute_count": "S",
-                            "comm_flag": "R",
-                            "for_hire_charter_flag": "R",
-                            "for_hire_hb_flag": "R",
-                            "rec_flag": "R"
-                        },
-                        {
-                            "attribute_code": 1203,
-                            "attribute_name": "Tag #",
-                            "attribute_desc": "HMS Tag Number (the 9 digits follows BT starting with 05 or 90)",
-                            "species_itis": "172421",
-                            "type": "NUMBER",
-                            "order_seq": 14,
-                            "comm_flag": "Y",
-                            "for_hire_charter_flag": "Y",
-                            "for_hire_hb_flag": "Y",
-                            "rec_flag": "Y"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "Partner_Managed_Species count: 2"
                 }
             },
             "areas_fished_response": {
@@ -3724,118 +3058,6 @@
                     ],
                     "status": "OK",
                     "description": "Participants count: 2"
-                }
-            },
-            "vessels_response": {
-                "title": "VESSELS",
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "format": "int32",
-                                    "description": "unique id of vessel",
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "description": "name of vessel",
-                                    "type": "string"
-                                },
-                                "state": {
-                                    "description": "US state abbreviation for registered state",
-                                    "type": "string"
-                                },
-                                "coast_guard": {
-                                    "description": "US Coast Guard Number of vessel",
-                                    "type": "string"
-                                },
-                                "state_reg": {
-                                    "description": "State Registration Number of vessel",
-                                    "type": "string"
-                                },
-                                "permits": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "num": {
-                                                "description": "permit number of vessel",
-                                                "type": "string"
-                                            },
-                                            "agency": {
-                                                "description": "4 character issuing agency of the vessel permit number",
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                },
-                                "in_use": {
-                                    "description": "indicator of whether the record is in use currently.",
-                                    "enum": [
-                                        "Y",
-                                        "N"
-                                    ],
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the request",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "human readable description of the status of request",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "id": "80767",
-                            "name": "RUTHIE B",
-                            "state": "MA",
-                            "coast_guard": "610395",
-                            "permits": [
-                                {
-                                    "num": "SERO-4401",
-                                    "agency": "0016"
-                                },
-                                {
-                                    "num": "610395",
-                                    "agency": "0018"
-                                }
-                            ],
-                            "in_use": "Y"
-                        },
-                        {
-                            "id": "85341",
-                            "name": "THE GIPPER",
-                            "state": "NJ",
-                            "coast_guard": "556363",
-                            "permits": [
-                                {
-                                    "num": "SERO-1070",
-                                    "agency": "0016"
-                                },
-                                {
-                                    "num": "556363",
-                                    "agency": "0018"
-                                }
-                            ],
-                            "in_use": "Y"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "1+ Vessel(s) Returned"
                 }
             },
             "swipe_cards_response": {
@@ -4360,94 +3582,6 @@
                     "description": "Sale_Dispositions_Additional_Attributes count: 2"
                 }
             },
-            "catch": {
-                "title": "Catch",
-                "description": "",
-                "required": [
-                    "disposition",
-                    "species_itis",
-                    "supplier_catch_id",
-                    "unit_of_measure",
-                    "reported_quantity",
-                    "catch_source",
-                    "grade_code",
-                    "market_code"
-                ],
-                "type": "object",
-                "properties": {
-                    "species_itis": {
-                        "description": "ITIS code of the fish caught",
-                        "type": "string"
-                    },
-                    "disposition": {
-                        "description": "The final disposition or fate of the catch.",
-                        "type": "string"
-                    },
-                    "unit_of_measure": {
-                        "description": "Code for unit of measure used to reference the reported_quantity field",
-                        "type": "string"
-                    },
-                    "market_code": {
-                        "description": "Factors affecting market price (such as size).",
-                        "type": "string"
-                    },
-                    "grade_code": {
-                        "description": "Grade, or how catch was processed.",
-                        "type": "string"
-                    },
-                    "reported_quantity": {
-                        "description": "Numeric quantity of fish caught. Always used in conjunction with unit_of_measure field. ",
-                        "type": "string"
-                    },
-                    "nbr_of_fish": {
-                        "description": "Count of fish caught",
-                        "type": "string"
-                    },
-                    "supplier_catch_id": {
-                        "description": "Unique catch id given by the caller. Only used to communicate errors and for updates.",
-                        "type": "string"
-                    },
-                    "sale_disposition_flag": {
-                        "description": "Code indicating whether catch was sold, kept, or discarded.",
-                        "type": "string"
-                    },
-                    "catch_additional_attributes": {
-                        "description": "Collection of supplemental attributes defining the catch.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/attribute"
-                        }
-                    },
-                    "species_attributes": {
-                        "description": "Collection of species-specific supplemental attributes defining the catch.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/attribute"
-                        }
-                    },
-                    "catch_source": {
-                        "description": "Source of a fisher’s catch (S = Standard wild-caught; A = Aquaculture; R = Research Set Aside; C = Carred).",
-                        "enum": [
-                            "S",
-                            "A",
-                            "R",
-                            "C"
-                        ],
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "species_itis": "170425",
-                    "disposition": "001",
-                    "unit_of_measure": "LB",
-                    "market_code": "UN",
-                    "grade_code": "01",
-                    "reported_quantity": "25",
-                    "nbr_of_fish": "4",
-                    "supplier_catch_id": "6",
-                    "catch_source": "S"
-                }
-            },
             "attribute_multi_value": {
                 "title": "additional attributes",
                 "description": "",
@@ -4525,220 +3659,6 @@
                     "code": "231",
                     "value": "1233",
                     "units": "CM"
-                }
-            },
-            "participant": {
-                "title": "Participant",
-                "description": "",
-                "required": [
-                    "birth_date",
-                    "first_name",
-                    "last_name",
-                    "supplier_user_id"
-                ],
-                "type": "object",
-                "properties": {
-                    "supplier_user_id": {
-                        "description": "unique identifier for this user. Used to communicate back errors and for updates",
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "users valid email address",
-                        "type": "string"
-                    },
-                    "first_name": {
-                        "description": "user's legal first name",
-                        "type": "string"
-                    },
-                    "last_name": {
-                        "description": "users legal last name",
-                        "type": "string"
-                    },
-                    "birth_date": {
-                        "format": "date",
-                        "description": "date of birth. Format MM/DD/YYYY",
-                        "type": "string"
-                    },
-                    "iss_agency": {
-                        "description": "4 character identification of license issuing agency",
-                        "type": "string"
-                    },
-                    "license_nbr": {
-                        "description": "license/permit number given by the issuing agency",
-                        "type": "string"
-                    },
-                    "address_1": {
-                        "description": "address line 1",
-                        "type": "string"
-                    },
-                    "address_2": {
-                        "description": "address line 2",
-                        "type": "string"
-                    },
-                    "city": {
-                        "description": "address city",
-                        "type": "string"
-                    },
-                    "state": {
-                        "description": "US State or Territory",
-                        "type": "string"
-                    },
-                    "county": {
-                        "description": "address county",
-                        "type": "string"
-                    },
-                    "postal_code": {
-                        "description": "US Postal Code",
-                        "type": "string"
-                    },
-                    "phone_nbr": {
-                        "description": "users 10 digit phone number",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "supplier_user_id": "1222",
-                    "email": "testemail@example.com",
-                    "first_name": "Jonas",
-                    "last_name": "Brother",
-                    "birth_date": "04/13/1980",
-                    "iss_agency": "0018",
-                    "license_nbr": "526783",
-                    "address_1": "909 Georgia Ave",
-                    "address_2": "Suite 100",
-                    "city": "Silver Spring",
-                    "state": "MD",
-                    "county": "Montgomery",
-                    "postal_code": "20910",
-                    "phone_nbr": "5559900647"
-                }
-            },
-            "neg_trip": {
-                "title": "negative trip",
-                "description": "no-fishing report/negative trip",
-                "required": [
-                    "cf_license_nbr",
-                    "start_date",
-                    "supplier_row_id",
-                    "iss_agency"
-                ],
-                "type": "object",
-                "properties": {
-                    "supplier_row_id": {
-                        "description": "unique identifier given by sender. Useful for updating information and retrieving errors. ",
-                        "type": "string"
-                    },
-                    "iss_agency": {
-                        "description": "4 digit identification of the issuing agency of permit",
-                        "type": "string"
-                    },
-                    "start_date": {
-                        "format": "date",
-                        "description": "start date of the negative/no fishing report",
-                        "type": "string"
-                    },
-                    "end_date": {
-                        "format": "date",
-                        "description": "last date of negative report if a range is being given",
-                        "type": "string"
-                    },
-                    "cf_license_nbr": {
-                        "description": "license number given by issuing agency",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "supplier_row_id": "1231231",
-                    "iss_agency": "0003",
-                    "start_date": "11/22/2015",
-                    "end_date": "11/22/2015",
-                    "cf_license_nbr": "999999"
-                }
-            },
-            "trip_upload_response": {
-                "description": "response to successful trips_upload call. ",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "event_id": {
-                                    "description": "unique ID of this upload process",
-                                    "type": "string"
-                                },
-                                "upload_date": {
-                                    "description": "date the upload was received by server. Format MM/DD/YYYY hh24:mi",
-                                    "type": "string"
-                                },
-                                "process_date": {
-                                    "description": "date the server completed processing upload request. Format MM/DD/YYYY hh24:mi",
-                                    "type": "string"
-                                },
-                                "total_count": {
-                                    "description": "Number of trips found in the upload",
-                                    "type": "string"
-                                },
-                                "errored_count": {
-                                    "description": "Number of trips NOT processed due to one or more errors",
-                                    "type": "string"
-                                },
-                                "trips_accepted": {
-                                    "description": "details for accepted trips",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "supplier_trip_id": {
-                                                "description": "unique supplier id for supplied to the upload",
-                                                "type": "string"
-                                            },
-                                            "accsp_trip_id": {
-                                                "description": "accsp internal identifier for this matching the supplier trip id",
-                                                "type": "number"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the upload attempt",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "Human readable description of the status reason or failure.",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "event_id": "121582",
-                            "upload_date": "2018-08-30 12:56:28",
-                            "process_date": "12:56:32",
-                            "total_count": "2",
-                            "errored_count": "0",
-                            "trips_accepted": [
-                                {
-                                    "supplier_trip_id": "0192929",
-                                    "accsp_trip_id": 1231213
-                                },
-                                {
-                                    "supplier_trip_id": "0141229",
-                                    "accsp_trip_id": 1211213
-                                }
-                            ]
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "UPDATE EVENTS UPLOAD"
                 }
             },
             "notification_upload_response": {
@@ -4971,6 +3891,1391 @@
                     ]
                 }
             },
+            "vessels_on_license_response": {
+                "title": "vessels_on_license",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Vessel_ID": {
+                                    "description": "unique identifier of vessel in SAFIS",
+                                    "type": "string"
+                                },
+                                "Name": {
+                                    "description": "vessel name",
+                                    "type": "string"
+                                },
+                                "State_Reg": {
+                                    "description": "state registration number of vessel",
+                                    "type": "string"
+                                },
+                                "License_NBR": {
+                                    "type": "string"
+                                },
+                                "permits": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "num": {
+                                                "description": "permit number of vessel",
+                                                "type": "string"
+                                            },
+                                            "agency": {
+                                                "description": "4 character issuing agency of the vessel permit number",
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "In_Use": {
+                                    "description": "flag indicating whether record is active",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request attempt",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Human readable description of the status given.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "Vessel_ID": "314544",
+                            "Name": "ROCKIN ROBIN",
+                            "State_Reg": "MS8609BL",
+                            "License_NBR": "177095",
+                            "permits": [
+                                {
+                                    "num": "3441070",
+                                    "agency": "0012"
+                                },
+                                {
+                                    "num": "556363",
+                                    "agency": "0018"
+                                }
+                            ],
+                            "In_Use": "Y"
+                        },
+                        {
+                            "Vessel_ID": "305727",
+                            "Name": "ANNIES SONG",
+                            "State_Reg": "MS3314BJ",
+                            "License_NBR": "176219",
+                            "permits": [
+                                {
+                                    "num": "SERO-1070",
+                                    "agency": "0016"
+                                },
+                                {
+                                    "num": "556365",
+                                    "agency": "0018"
+                                }
+                            ],
+                            "In_Use": "N"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "Vessels assigned for Fisherman endorsement(s): 2"
+                }
+            },
+            "dealer_report": {
+                "title": "Root Type for dealer_report",
+                "description": "",
+                "required": [
+                    "landings",
+                    "date_of_pur",
+                    "cf_partner_id",
+                    "cf_license_nbr",
+                    "landing_date",
+                    "port",
+                    "supplier_dr_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "state_reg_nbr": {
+                        "description": "State Registration number of vessel. If no vessel used, provide 'FROM_SHORE'. Required to provide either coast_guard_nbr or state_reg_nbr.",
+                        "type": "string"
+                    },
+                    "landing_date": {
+                        "format": "date",
+                        "description": "Landing Date of report. Format MM/DD/YYYY",
+                        "type": "string"
+                    },
+                    "time_landed": {
+                        "type": "string"
+                    },
+                    "date_of_pur": {
+                        "format": "date",
+                        "description": "Purchase date. Format MM/DD/YYYY",
+                        "type": "string"
+                    },
+                    "dea_license_nbr": {
+                        "description": "Permit/License Number of Dealer in use",
+                        "type": "string"
+                    },
+                    "dea_partner_id": {
+                        "description": "4 character identifier of issuing agency of dealer permit in use",
+                        "type": "string"
+                    },
+                    "supplier_dr_id": {
+                        "description": "unique report id given by the caller. Only used to communicate errors and updates.",
+                        "type": "string"
+                    },
+                    "cf_license_nbr": {
+                        "description": "Permit/License Number of fisherman purchased from.",
+                        "type": "string"
+                    },
+                    "cf_partner_id": {
+                        "description": "4 character identifier of issuing agency of fisherman permit in use",
+                        "type": "string"
+                    },
+                    "submit_method": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "description": "Landing Port of Vessel",
+                        "type": "string"
+                    },
+                    "trip_start_date": {
+                        "type": "string"
+                    },
+                    "trip_start_time": {
+                        "type": "string"
+                    },
+                    "vtr_number": {
+                        "description": "vessel tracking report number when a NMFS-NE registed vessel is in use.",
+                        "type": "string"
+                    },
+                    "landings": {
+                        "description": "Collection of landings in this dealer report.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/landing"
+                        }
+                    }
+                },
+                "example": {
+                    "state_reg_nbr": "MS9999",
+                    "landing_date": "02/01/2017",
+                    "time_landed": "1618",
+                    "date_of_pur": "02/01/2017",
+                    "dea_license_nbr": "MADEALER",
+                    "dea_partner_id": "0003",
+                    "supplier_dr_id": "22882-2K1-U-9MUPC",
+                    "cf_license_nbr": "22882",
+                    "cf_partner_id": "0003",
+                    "vtr_number": "23452120091807",
+                    "submit_method": "D",
+                    "port": "240513",
+                    "catch_source": "S",
+                    "trip_start_date": "01/31/2017",
+                    "trip_start_time": "1018",
+                    "landings": [
+                        {
+                            "species_itis": "079872",
+                            "disposition_code": "001",
+                            "gear_code": "620",
+                            "grade_code": "02",
+                            "unit_measure": "CN",
+                            "reported_quantity": "2500",
+                            "price": ".65",
+                            "market_code": "UN",
+                            "area_fished": "514",
+                            "sub_area_fished": "0057",
+                            "local_area_code": "CCB42",
+                            "catch_source": "A",
+                            "temp_unit": "F",
+                            "gear_quantity": "1",
+                            "in_state": "MA",
+                            "total_gear_in_water": "1",
+                            "fishing_hours": "3",
+                            "hours_days_flag": "H"
+                        },
+                        {
+                            "species_itis": "079872",
+                            "disposition_code": "001",
+                            "gear_code": "620",
+                            "grade_code": "02",
+                            "unit_measure": "CN",
+                            "reported_quantity": "3500",
+                            "price": ".5",
+                            "market_code": "SH",
+                            "area_fished": "514",
+                            "sub_area_fished": "0057",
+                            "local_area_code": "CCB42",
+                            "catch_source": "A",
+                            "temp_unit": "F",
+                            "gear_quantity": "1",
+                            "in_state": "MA",
+                            "total_gear_in_water": "1",
+                            "fishing_hours": "3",
+                            "hours_days_flag": "H"
+                        }
+                    ]
+                }
+            },
+            "participant": {
+                "title": "Participant",
+                "description": "",
+                "required": [
+                    "birth_date",
+                    "first_name",
+                    "last_name",
+                    "supplier_user_id",
+                    "license_type"
+                ],
+                "type": "object",
+                "properties": {
+                    "supplier_user_id": {
+                        "description": "unique identifier for this user. Used to communicate back errors and for updates",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "users valid email address",
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "description": "user's legal first name",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "description": "users legal last name",
+                        "type": "string"
+                    },
+                    "birth_date": {
+                        "format": "date",
+                        "description": "date of birth. Format MM/DD/YYYY",
+                        "type": "string"
+                    },
+                    "iss_agency": {
+                        "description": "4 character identification of license issuing agency",
+                        "type": "string"
+                    },
+                    "license_nbr": {
+                        "description": "license/permit number given by the issuing agency",
+                        "type": "string"
+                    },
+                    "address_1": {
+                        "description": "address line 1",
+                        "type": "string"
+                    },
+                    "address_2": {
+                        "description": "address line 2",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "address city",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "US State or Territory",
+                        "type": "string"
+                    },
+                    "county": {
+                        "description": "address county",
+                        "type": "string"
+                    },
+                    "postal_code": {
+                        "description": "US Postal Code",
+                        "type": "string"
+                    },
+                    "phone_nbr": {
+                        "description": "users 10 digit phone number",
+                        "type": "string"
+                    },
+                    "license_type": {
+                        "description": "The type of license based on expected trip types. ",
+                        "enum": [
+                            "COMMERCIAL",
+                            "FOR-HIRE",
+                            "MYFISHCOUNT"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "supplier_user_id": "1222",
+                    "email": "testemail@example.com",
+                    "first_name": "Jonas",
+                    "last_name": "Brother",
+                    "birth_date": "04/13/1980",
+                    "iss_agency": "0018",
+                    "license_nbr": "526783",
+                    "license_type": "MYFISHCOUNT",
+                    "address_1": "909 Georgia Ave",
+                    "address_2": "Suite 100",
+                    "city": "Silver Spring",
+                    "state": "MD",
+                    "county": "Montgomery",
+                    "postal_code": "20910",
+                    "phone_nbr": "5559900647"
+                }
+            },
+            "gear_attributes_response": {
+                "title": "GEAR_ATTRIBUTES",
+                "description": "GEAR_ATTRIBUTES",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "attribute_code": {
+                                    "format": "int32",
+                                    "description": "unique attribute code/id",
+                                    "type": "integer"
+                                },
+                                "attribute_name": {
+                                    "description": "name of the attribute",
+                                    "type": "string"
+                                },
+                                "attribute_desc": {
+                                    "description": "help text of the attribute",
+                                    "type": "string"
+                                },
+                                "category_code": {
+                                    "description": "category of the gear",
+                                    "type": "string"
+                                },
+                                "gear_code": {
+                                    "description": "gear code value to be returned where gear is requested.",
+                                    "type": "string"
+                                },
+                                "options": {
+                                    "description": "static list of options for this attribute",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object"
+                                    }
+                                },
+                                "order_seq": {
+                                    "format": "int32",
+                                    "description": "numerical order of listing relative to other attributes",
+                                    "type": "integer"
+                                },
+                                "attribute_count": {
+                                    "description": "indicates whether a single (S) value is returned or Multiple (M) are",
+                                    "enum": [
+                                        "S",
+                                        "M"
+                                    ],
+                                    "type": "string"
+                                },
+                                "list_type": {
+                                    "description": "indicates whether the list is static (S) or Dynamic (D)",
+                                    "enum": [
+                                        "S",
+                                        "D"
+                                    ],
+                                    "type": "string"
+                                },
+                                "list_name": {
+                                    "description": "The name of the LOOKUP_LIST to be used (if applicable)",
+                                    "type": "string"
+                                },
+                                "comm_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_charter_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_hb_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "rec_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "format of the attribute",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request ",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of the result status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "attribute_code": 142,
+                            "attribute_name": "Number of traps",
+                            "attribute_desc": "Number of traps",
+                            "category_code": "160",
+                            "gear_code": "160",
+                            "order_seq": 83,
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "N",
+                            "for_hire_hb_flag": "N",
+                            "rec_flag": "N",
+                            "type": "NUMBER (38,0)"
+                        },
+                        {
+                            "attribute_code": 1321,
+                            "attribute_name": "LMA",
+                            "attribute_desc": "Lobster Management Area",
+                            "category_code": "160",
+                            "gear_code": "160",
+                            "options": [
+                                {
+                                    "1": "LMA 1"
+                                },
+                                {
+                                    "2": "LMA 2"
+                                },
+                                {
+                                    "3": "LMA 3"
+                                },
+                                {
+                                    "4": "LMA 4"
+                                },
+                                {
+                                    "5": "LMA 5"
+                                },
+                                {
+                                    "6": "LMA 6"
+                                },
+                                {
+                                    "O": "OCC"
+                                }
+                            ],
+                            "order_seq": 25,
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "N",
+                            "for_hire_hb_flag": "N",
+                            "rec_flag": "N",
+                            "type": "STRING"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "2 Gear Attribute(s) Returned"
+                }
+            },
+            "neg_trip": {
+                "title": "negative trip",
+                "description": "no-fishing report/negative trip",
+                "required": [
+                    "cf_license_nbr",
+                    "start_date",
+                    "supplier_row_id",
+                    "iss_agency"
+                ],
+                "type": "object",
+                "properties": {
+                    "supplier_row_id": {
+                        "description": "unique identifier given by sender. Useful for updating information and retrieving errors. ",
+                        "type": "string"
+                    },
+                    "iss_agency": {
+                        "description": "4 digit identification of the issuing agency of permit",
+                        "type": "string"
+                    },
+                    "start_date": {
+                        "format": "date",
+                        "description": "start date of the negative/no fishing report",
+                        "type": "string"
+                    },
+                    "end_date": {
+                        "format": "date",
+                        "description": "last date of negative report if a range is being given",
+                        "type": "string"
+                    },
+                    "cf_license_nbr": {
+                        "description": "license number given by issuing agency",
+                        "type": "string"
+                    },
+                    "state_reg_nbr": {
+                        "description": "State Registration number of vessel. If no vessel used, provide 'FROM_SHORE'.",
+                        "type": "string"
+                    },
+                    "coast_guard_nbr": {
+                        "description": "Coast Guard Number/Hull Number of vessel.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "supplier_row_id": "1231231",
+                    "iss_agency": "0003",
+                    "start_date": "11/22/2015",
+                    "end_date": "11/22/2015",
+                    "cf_license_nbr": "999999"
+                }
+            },
+            "trip_upload_response": {
+                "description": "response to successful trips_upload call. ",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "event_id": {
+                                    "description": "unique ID of this upload process",
+                                    "type": "string"
+                                },
+                                "upload_date": {
+                                    "description": "date the upload was received by server. Format MM/DD/YYYY hh24:mi",
+                                    "type": "string"
+                                },
+                                "process_date": {
+                                    "description": "date the server completed processing upload request. Format MM/DD/YYYY hh24:mi",
+                                    "type": "string"
+                                },
+                                "total_count": {
+                                    "description": "Number of trips found in the upload",
+                                    "type": "string"
+                                },
+                                "errored_count": {
+                                    "description": "Number of trips NOT processed due to one or more errors",
+                                    "type": "string"
+                                },
+                                "trips_accepted": {
+                                    "description": "details for accepted trips",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "supplier_trip_id": {
+                                                "description": "unique supplier id for supplied to the upload",
+                                                "type": "string"
+                                            },
+                                            "accsp_trip_id": {
+                                                "description": "accsp internal identifier for this matching the supplier trip id",
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "errors": {
+                                    "description": "errors messages",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "msg": {
+                                                "description": "human readable error description",
+                                                "type": "string"
+                                            },
+                                            "supplier_trip_id": {
+                                                "description": "unique supplier trip id on which this errror occurred",
+                                                "type": "string"
+                                            },
+                                            "supplier_effort_id": {
+                                                "description": "unique supplier effort id on which this errror occurred",
+                                                "type": "string"
+                                            },
+                                            "supplier_catch_id": {
+                                                "description": "unique supplier catch id on which this errror occurred",
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the upload attempt",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Human readable description of the status reason or failure.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "event_id": "121582",
+                            "upload_date": "2018-08-30 12:56:28",
+                            "process_date": "12:56:32",
+                            "total_count": "2",
+                            "errored_count": "0",
+                            "trips_accepted": [
+                                {
+                                    "supplier_trip_id": "0192929",
+                                    "accsp_trip_id": 1231213
+                                },
+                                {
+                                    "supplier_trip_id": "0141229",
+                                    "accsp_trip_id": 1211213
+                                }
+                            ],
+                            "errors": [
+                                {
+                                    "msg": "Gear Used is not valid for this Trip Type",
+                                    "supplier_effort_id": "9299393-893"
+                                },
+                                {
+                                    "msg": "Trip Start Date cannot occur in the future",
+                                    "supplier_trip_id": "93939-83838"
+                                }
+                            ]
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "UPDATE EVENTS UPLOAD"
+                }
+            },
+            "notification_upload_request": {
+                "title": "Root Type for notification_upload_request",
+                "description": "The calling app sends a notification record in JSON format.  The record consists of core notification details submitted as parameter values, and optional partner-managed notification attributes submitted as a JSON array.  See example request.  The response, also in JSON format, includes the universal trip ID for the trip.  The universal trip ID is created when a notification record is submitted if this is the first notification associated with the trip.  If an existing universal trip ID already exists for the same trip, the previously generated universal trip ID is returned.  \r\n",
+                "required": [
+                    "p_arrival_port",
+                    "p_license_nbr",
+                    "p_notif_type",
+                    "p_trip_type",
+                    "p_start_time",
+                    "p_start_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_license_nbr": {
+                        "description": "alphanumeric value representing a user's license number.",
+                        "type": "string"
+                    },
+                    "p_partner": {
+                        "description": "Partner or issuing agency code.",
+                        "type": "string"
+                    },
+                    "p_vessel_cgn": {
+                        "description": "vessel coast guard number.  a vessel coast guard or state registration number is required.",
+                        "type": "string"
+                    },
+                    "p_vessel_srn": {
+                        "description": "vessel state registration number.  a vessel coast guard or state registration number is required.",
+                        "type": "string"
+                    },
+                    "p_trip_type": {
+                        "description": "code to define the type of trip.  allowed values are C = Commercial, R = Recreational, H = For Hire-Headboat, A = For Hire-Charter. ",
+                        "type": "string"
+                    },
+                    "p_start_date": {
+                        "format": "date",
+                        "description": "trip start date in format MM/DD/YYYY.",
+                        "type": "string"
+                    },
+                    "p_start_time": {
+                        "description": "trip start time in format HHMM.",
+                        "type": "string"
+                    },
+                    "p_arrival_port": {
+                        "description": "port code for the arrival (ending) port.",
+                        "type": "string"
+                    },
+                    "p_notif_type": {
+                        "description": "trip notification type being submitted.  Allowed values are 1 = Pre Trip, 2 =    Fishing, 3 = Landing, 4 = Post-Trip, 5 = Cancellation, 6 = Hail Out, and 7 = Closed.  If no value is provided, Hail Out (Type = 6) is used as the default.",
+                        "type": "string"
+                    },
+                    "partner_attributes": {
+                        "description": "list of optional partner-managed notification attributes submitted as a JSON array.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/partner_attribute"
+                        }
+                    }
+                },
+                "example": {
+                    "p_license_nbr": "991011",
+                    "p_vessel_cgn": "",
+                    "p_vessel_srn": "NH0258BA",
+                    "p_trip_type": "C",
+                    "p_start_date": "05/03/2020",
+                    "p_start_time": "1845",
+                    "p_arrival_port": "222109",
+                    "p_notif_type": "6",
+                    "partner_attributes": [
+                        {
+                            "element_id": "400",
+                            "element_value": "2883"
+                        },
+                        {
+                            "element_id": "403",
+                            "element_value": "Y"
+                        }
+                    ]
+                }
+            },
+            "catch": {
+                "title": "Catch",
+                "description": "",
+                "required": [
+                    "disposition",
+                    "species_itis",
+                    "supplier_catch_id",
+                    "unit_of_measure",
+                    "reported_quantity",
+                    "catch_source",
+                    "grade_code",
+                    "market_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "species_itis": {
+                        "description": "ITIS code of the fish caught",
+                        "type": "string"
+                    },
+                    "disposition": {
+                        "description": "The final disposition or fate of the catch.",
+                        "type": "string"
+                    },
+                    "unit_of_measure": {
+                        "description": "Code for unit of measure used to reference the reported_quantity field",
+                        "type": "string"
+                    },
+                    "market_code": {
+                        "description": "Factors affecting market price (such as size).",
+                        "type": "string"
+                    },
+                    "grade_code": {
+                        "description": "Grade, or how catch was processed.",
+                        "type": "string"
+                    },
+                    "reported_quantity": {
+                        "description": "Numeric quantity of fish caught. Always used in conjunction with unit_of_measure field. ",
+                        "type": "string"
+                    },
+                    "nbr_of_fish": {
+                        "description": "Count of fish caught",
+                        "type": "string"
+                    },
+                    "supplier_catch_id": {
+                        "description": "Unique catch id given by the caller. Only used to communicate errors and for updates.",
+                        "type": "string"
+                    },
+                    "catch_source": {
+                        "description": "Source of a fisher’s catch (S = Standard wild-caught; A = Aquaculture; R = Research Set Aside; C = Carred).",
+                        "enum": [
+                            "S",
+                            "A",
+                            "R",
+                            "C"
+                        ],
+                        "type": "string"
+                    },
+                    "sale_disposition_flag": {
+                        "description": "Code indicating whether catch was sold, kept, or discarded.",
+                        "type": "string"
+                    },
+                    "catch_additional_attributes": {
+                        "description": "Collection of supplemental attributes defining the catch.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/attribute"
+                        }
+                    },
+                    "species_attributes": {
+                        "description": "Collection of species-specific supplemental attributes defining the catch.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/attribute"
+                        }
+                    }
+                },
+                "example": {
+                    "species_itis": "170425",
+                    "disposition": "001",
+                    "unit_of_measure": "LB",
+                    "market_code": "UN",
+                    "grade_code": "01",
+                    "reported_quantity": "25",
+                    "nbr_of_fish": "4",
+                    "catch_source": "S",
+                    "supplier_catch_id": "6"
+                }
+            },
+            "disposition_response": {
+                "title": "DISPOSITION",
+                "description": "disposition response",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "description": "disposition code. Expected value by trips_upload  and reports_upload",
+                                    "type": "string"
+                                },
+                                "desc": {
+                                    "description": "name of the disposition",
+                                    "type": "string"
+                                },
+                                "category_code": {
+                                    "description": "category code of disposition",
+                                    "type": "string"
+                                },
+                                "category_name": {
+                                    "description": "category name of disposition",
+                                    "type": "string"
+                                },
+                                "comm_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_ch_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_hb_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "rec_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "rule_groups": {
+                                    "description": "indicates a letter coded group that this disposition belongs to for the purpose of inclusion and exclusion of certain species fields.",
+                                    "type": "array",
+                                    "items": {
+                                        "enum": [
+                                            "A",
+                                            "D",
+                                            "F",
+                                            "H",
+                                            "I",
+                                            "J",
+                                            "L",
+                                            "P"
+                                        ],
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of request status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "code": "001",
+                            "desc": "General : Food",
+                            "category_code": "000",
+                            "category_name": "General Utilization",
+                            "comm_flag": "N",
+                            "for_hire_ch_flag": "N",
+                            "for_hire_hb_flag": "N",
+                            "rec_flag": "N"
+                        },
+                        {
+                            "code": "200",
+                            "desc": "Discarded Alive : Other",
+                            "category_code": "008",
+                            "category_name": "Discarded Alive",
+                            "comm_flag": "Y",
+                            "for_hire_ch_flag": "Y",
+                            "for_hire_hb_flag": "Y",
+                            "rec_flag": "Y",
+                            "rule_groups": [
+                                "F",
+                                "A"
+                            ]
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "Disposition count: 2"
+                }
+            },
+            "partner_managed_species_response": {
+                "title": "PARTNER_MANAGED_SPECIES",
+                "description": "",
+                "required": [
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "attribute_code": {
+                                    "format": "int32",
+                                    "description": "unique attribute code/id",
+                                    "type": "integer"
+                                },
+                                "attribute_name": {
+                                    "description": "name of attribute",
+                                    "type": "string"
+                                },
+                                "attribute_desc": {
+                                    "description": "accompanying help text",
+                                    "type": "string"
+                                },
+                                "species_itis": {
+                                    "description": "ITIS code of species",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "format of attribute.",
+                                    "enum": [
+                                        "NUMBER*",
+                                        "STRING",
+                                        "DATE",
+                                        "TIMESTAMP"
+                                    ],
+                                    "type": "string"
+                                },
+                                "list_type": {
+                                    "description": "denotes whether list returned is static (S) or dynamic(D)",
+                                    "enum": [
+                                        "S",
+                                        "D"
+                                    ],
+                                    "type": "string"
+                                },
+                                "options": {
+                                    "description": "JSON key-value pairs showing the return and display value of static list items respectively",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object"
+                                    }
+                                },
+                                "order_seq": {
+                                    "format": "int32",
+                                    "description": "display order of attribute relative to others",
+                                    "type": "integer"
+                                },
+                                "attribute_count": {
+                                    "description": "expected number of values returned. default is Single(S). Multiple (M).",
+                                    "enum": [
+                                        "S",
+                                        "M"
+                                    ],
+                                    "type": "string"
+                                },
+                                "comm_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_charter_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_hb_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "rec_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "limit_to_groups": {
+                                    "description": "indicates if element is limited to specific rule groups specified",
+                                    "type": "object",
+                                    "properties": {
+                                        "comm": {
+                                            "description": "the commercial trip rule group for which this attribute should display",
+                                            "enum": [
+                                                "A",
+                                                "D",
+                                                "F",
+                                                "H",
+                                                "I",
+                                                "J",
+                                                "L",
+                                                "P"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "hb": {
+                                            "description": "the headboat trip rule group for which this attribute should display",
+                                            "enum": [
+                                                "A",
+                                                "D",
+                                                "F",
+                                                "H",
+                                                "I",
+                                                "J",
+                                                "L",
+                                                "P"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "charter": {
+                                            "description": "the charter trip rule group for which this attribute should display",
+                                            "enum": [
+                                                "A",
+                                                "D",
+                                                "F",
+                                                "H",
+                                                "I",
+                                                "J",
+                                                "L",
+                                                "P"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "rec": {
+                                            "description": "the recreational trip rule group for which this attribute should display",
+                                            "enum": [
+                                                "A",
+                                                "D",
+                                                "F",
+                                                "H",
+                                                "I",
+                                                "J",
+                                                "L",
+                                                "P"
+                                            ],
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of the result status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "attribute_code": 1212,
+                            "attribute_name": "Length Qualifier",
+                            "attribute_desc": "How was the length taken? (measured or estimated)",
+                            "species_itis": "172421",
+                            "type": "STRING",
+                            "list_type": "S",
+                            "options": [
+                                {
+                                    "M": "Measured"
+                                },
+                                {
+                                    "E": "Estimated"
+                                },
+                                {
+                                    "U": "Unknown"
+                                }
+                            ],
+                            "order_seq": 6,
+                            "attribute_count": "S",
+                            "limit_to_groups": {
+
+                            },
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "R",
+                            "for_hire_hb_flag": "R",
+                            "rec_flag": "R"
+                        },
+                        {
+                            "attribute_code": 1200,
+                            "attribute_name": "HMS Catch Area",
+                            "attribute_desc": "Highly Migratory Species: Catch Area",
+                            "species_itis": "172423",
+                            "order_seq": 63,
+                            "attribute_count": "S",
+                            "type": "STRING",
+                            "limit_to_groups": {
+                                "hb": "H",
+                                "charter": "H",
+                                "rec": "H"
+                            },
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "R",
+                            "for_hire_hb_flag": "R",
+                            "rec_flag": "N"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "Partner_Managed_Species count: 2"
+                }
+            },
+            "vessels_response": {
+                "title": "VESSELS",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "format": "int32",
+                                    "description": "unique id of vessel",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "name of vessel",
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "description": "US state abbreviation for registered state",
+                                    "type": "string"
+                                },
+                                "coast_guard": {
+                                    "description": "US Coast Guard Number of vessel",
+                                    "type": "string"
+                                },
+                                "state_reg": {
+                                    "description": "State Registration Number of vessel",
+                                    "type": "string"
+                                },
+                                "permits": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "num": {
+                                                "description": "permit number of vessel",
+                                                "type": "string"
+                                            },
+                                            "agency": {
+                                                "description": "4 character issuing agency of the vessel permit number",
+                                                "type": "string"
+                                            },
+                                            "in_use": {
+                                                "description": "indicator of whether the permit record is in use currently.",
+                                                "enum": [
+                                                    "Y",
+                                                    "N"
+                                                ],
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "in_use": {
+                                    "description": "indicator of whether the vessel record is in use currently.",
+                                    "enum": [
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of the status of request",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "id": "80767",
+                            "name": "RUTHIE B",
+                            "state": "MA",
+                            "coast_guard": "610395",
+                            "permits": [
+                                {
+                                    "num": "SERO-4401",
+                                    "agency": "0016"
+                                },
+                                {
+                                    "num": "610395",
+                                    "agency": "0018"
+                                }
+                            ],
+                            "in_use": "Y"
+                        },
+                        {
+                            "id": "85341",
+                            "name": "THE GIPPER",
+                            "state": "NJ",
+                            "coast_guard": "556363",
+                            "permits": [
+                                {
+                                    "num": "SERO-1070",
+                                    "agency": "0016"
+                                },
+                                {
+                                    "num": "556363",
+                                    "agency": "0018"
+                                }
+                            ],
+                            "in_use": "Y"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "1+ Vessel(s) Returned"
+                }
+            },
+            "locations": {
+                "title": "Root Type for locations",
+                "description": "",
+                "required": [
+                    "p_supplier_trip_id",
+                    "locations"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_supplier_trip_id": {
+                        "description": "unique trip id given by the requesting entity",
+                        "type": "string"
+                    },
+                    "p_trip_id": {
+                        "description": "ACCSP trip id IF known. ",
+                        "type": "string"
+                    },
+                    "p_vendor_id": {
+                        "description": "vendor id of the device sending records",
+                        "type": "string"
+                    },
+                    "p_vessel_cgn": {
+                        "description": "US Coast Guard number/hull number",
+                        "type": "string"
+                    },
+                    "p_vessel_srn": {
+                        "description": "vessel state registration number",
+                        "type": "string"
+                    },
+                    "locations": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/location"
+                        }
+                    }
+                },
+                "example": {
+                    "p_supplier_trip_id": "55590000003",
+                    "p_trip_id": "900000003",
+                    "p_vendor_id": "1233345",
+                    "p_vessel_cgn": "MS4564AX",
+                    "locations": [
+                        {
+                            "latitude": "43.31238",
+                            "longitude": "-70.11428",
+                            "timestamp": "20191225131755"
+                        },
+                        {
+                            "latitude": "42.32238",
+                            "longitude": "-70.11628",
+                            "timestamp": "20191225131845"
+                        }
+                    ]
+                }
+            },
             "effort": {
                 "title": "Effort",
                 "description": "",
@@ -5053,8 +5358,8 @@
                             "$ref": "#/components/schemas/catch"
                         }
                     },
-                    "attributes": {
-                        "description": "Collection of supplemental attributes defining the gear configuration",
+                    "gear_attributes": {
+                        "description": "Collection of supplemental attributes defining the gear configuration or effort.",
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/attribute_with_units"
@@ -5083,81 +5388,6 @@
                     "total_gear": "0",
                     "gear_size": "",
                     "supplier_effort_id": "120119073102827"
-                }
-            },
-            "notification_upload_request": {
-                "title": "Root Type for notification_upload_request",
-                "description": "The calling app sends a notification record in JSON format.  The record consists of core notification details submitted as parameter values, and optional partner-managed notification attributes submitted as a JSON array.  See example request.  The response, also in JSON format, includes the universal trip ID for the trip.  The universal trip ID is created when a notification record is submitted if this is the first notification associated with the trip.  If an existing universal trip ID already exists for the same trip, the previously generated universal trip ID is returned.  \r\n",
-                "required": [
-                    "p_arrival_port",
-                    "p_license_nbr",
-                    "p_notif_type",
-                    "p_trip_type",
-                    "p_start_time",
-                    "p_start_date"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_license_nbr": {
-                        "description": "alphanumeric value representing a user's license number.",
-                        "type": "string"
-                    },
-                    "p_vessel_cgn": {
-                        "description": "vessel coast guard number.  a vessel coast guard or state registration number is required.",
-                        "type": "string"
-                    },
-                    "p_vessel_srn": {
-                        "description": "vessel state registration number.  a vessel coast guard or state registration number is required.",
-                        "type": "string"
-                    },
-                    "p_trip_type": {
-                        "description": "code to define the type of trip.  allowed values are C = Commercial, R = Recreational, H = For Hire-Headboat, A = For Hire-Charter. ",
-                        "type": "string"
-                    },
-                    "p_start_date": {
-                        "format": "date",
-                        "description": "trip start date in format MM/DD/YYYY.",
-                        "type": "string"
-                    },
-                    "p_start_time": {
-                        "description": "trip start time in format HHMM.",
-                        "type": "string"
-                    },
-                    "p_arrival_port": {
-                        "description": "port code for the arrival (ending) port.",
-                        "type": "string"
-                    },
-                    "p_notif_type": {
-                        "description": "trip notification type being submitted.  Allowed values are 1 = Pre Trip, 2 =    Fishing, 3 = Landing, 4 = Post-Trip, 5 = Cancellation, 6 = Hail Out, and 7 = Closed.  If no value is provided, Hail Out (Type = 6) is used as the default.",
-                        "type": "string"
-                    },
-                    "partner_attributes": {
-                        "description": "list of optional partner-managed notification attributes submitted as a JSON array.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/partner_attribute"
-                        }
-                    }
-                },
-                "example": {
-                    "p_license_nbr": "991011",
-                    "p_vessel_cgn": "",
-                    "p_vessel_srn": "NH0258BA",
-                    "p_trip_type": "C",
-                    "p_start_date": "05/30/2020",
-                    "p_start_time": "1845",
-                    "p_arrival_port": "222109",
-                    "p_notif_type": "6",
-                    "partner_attributes": [
-                        {
-                            "element_id": "400",
-                            "element_value": "2883"
-                        },
-                        {
-                            "element_id": "403",
-                            "element_value": "Y"
-                        }
-                    ]
                 }
             }
         },
