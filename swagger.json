@@ -5427,6 +5427,7 @@
                         }
                     },
                     "status": {
+                        "description": "status of request",
                         "enum": [
                             "OK",
                             "FAIL"
@@ -5434,6 +5435,7 @@
                         "type": "string"
                     },
                     "description": {
+                        "description": "human readable description of request status",
                         "type": "string"
                     }
                 },
