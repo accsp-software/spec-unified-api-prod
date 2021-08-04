@@ -5427,6 +5427,10 @@
                         }
                     },
                     "status": {
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
                         "type": "string"
                     },
                     "description": {
