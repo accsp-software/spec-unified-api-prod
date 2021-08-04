@@ -913,7 +913,7 @@
                         "$ref": "#/components/schemas/sale_dispositions_response"
                     },
                     {
-                        "$ref": "#/components/schemas/vms_landing_locations"
+                        "$ref": "#/components/schemas/vms_landing_locations_response"
                     }
                 ],
                 "description": "",
@@ -5394,7 +5394,7 @@
                     "supplier_effort_id": "120119073102827"
                 }
             },
-            "vms_landing_locations": {
+            "vms_landing_locations_response": {
                 "title": "Root Type for vms_landing_locations",
                 "description": "list of VMS landing locations.\n",
                 "type": "object",
