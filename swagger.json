@@ -1126,38 +1126,6 @@
                     "description": "Attribute(s) Found"
                 }
             },
-            "lookup_list_date_changed_request": {
-                "title": "Root Type for lookup_list_date_changed_request",
-                "description": "",
-                "required": [
-                    "p_listnames",
-                    "p_partner"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_partner": {
-                        "description": "4 character value of permit issuing agency\n",
-                        "type": "string"
-                    },
-                    "p_listnames": {
-                        "description": "One or more list names from:\n\nGEARS,\nGEAR_ATTRIBUTES,\nTRIP_ADDITIONAL_ATTRIBUTES,\nEFFORT_ADDITIONAL_ATTRIBUTES, \nPARTNER_MANAGED_SPECIES, \nDISPOSITION, \nAREASFISHED, \nSPECIES, \nCATCH_SOURCE, \nUSER_NOTIFICATIONS, \nPARTICIPANTS, \nVESSELS,\nSWIPE_CARDS, \nTRIP_ACTIVITY, \nPORTS , \nDEALERS, \nPARTNER_MANAGED_NOTIFICATIONS, \nSALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES\n",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "example": {
-                    "p_partner": "0023",
-                    "p_listnames": [
-                        "GEARS",
-                        "VESSELS",
-                        "GEAR_ATTRIBUTES",
-                        "TRIP_ADDITIONAL_ATTRIBUTES",
-                        "EFFORT_ADDITIONAL_ATTRIBUTES"
-                    ]
-                }
-            },
             "lookup_list_date_changed_response": {
                 "title": "Root Type for lookup_list_date_changed_response",
                 "description": "",
@@ -5571,6 +5539,38 @@
                     "p_listname": "GEARS",
                     "p_listtype": "EDR",
                     "p_lastdate": "12/27/2010 14:45:00 "
+                }
+            },
+            "lookup_list_date_changed_request": {
+                "title": "Root Type for lookup_list_date_changed_request",
+                "description": "",
+                "required": [
+                    "p_listnames",
+                    "p_partner"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_partner": {
+                        "description": "4 character value of permit issuing agency\n",
+                        "type": "string"
+                    },
+                    "p_listnames": {
+                        "description": "One or more list names from:\n\nGEARS,\nGEAR_ATTRIBUTES,\nTRIP_ADDITIONAL_ATTRIBUTES,\nEFFORT_ADDITIONAL_ATTRIBUTES, \nPARTNER_MANAGED_SPECIES, \nDISPOSITION, \nAREASFISHED, \nSPECIES, \nCATCH_SOURCE, \nUSER_NOTIFICATIONS, \nPARTICIPANTS, \nVESSELS,\nSWIPE_CARDS, \nTRIP_ACTIVITY, \nPORTS , \nDEALERS, \nPARTNER_MANAGED_NOTIFICATIONS, \nSALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES,\nGARFO_ACCSP_GEAR_MAPPING\n",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "example": {
+                    "p_partner": "0023",
+                    "p_listnames": [
+                        "GEARS",
+                        "VESSELS",
+                        "GEAR_ATTRIBUTES",
+                        "TRIP_ADDITIONAL_ATTRIBUTES",
+                        "EFFORT_ADDITIONAL_ATTRIBUTES"
+                    ]
                 }
             }
         },
