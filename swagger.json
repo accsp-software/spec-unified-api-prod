@@ -674,7 +674,7 @@
                     }
                 ],
                 "summary": "neg_trips_upload ",
-                "description": "send a set of negative / no fishing trip reports to safis."
+                "description": "The neg_trips_upload endpoint accepts multiple reports within a single API call (see example request).  However, to avoid unexpected validation failures we recommend sending reports from the same fishing license, participant and vessel within individual API calls.  Including different fishing licenses or vessels within a single API call may result in unexpected validation failures and misleading errors."
             }
         },
         "/trips_upload": {
