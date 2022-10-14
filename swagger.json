@@ -294,7 +294,7 @@
                                 }
                             }
                         },
-                        "description": "output of the endpoint"
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
                     }
                 },
                 "security": [
@@ -552,7 +552,7 @@
                                 }
                             }
                         },
-                        "description": "output of the endpoint"
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response.
                     }
                 },
                 "security": [
@@ -664,7 +664,7 @@
                                 }
                             }
                         },
-                        "description": "output of the endpoint"
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
                     }
                 },
                 "security": [
@@ -728,7 +728,7 @@
                                 }
                             }
                         },
-                        "description": "successful upload attempt"
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
                     }
                 },
                 "security": [
