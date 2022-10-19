@@ -552,7 +552,7 @@
                                 }
                             }
                         },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response.
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
                     }
                 },
                 "security": [
