@@ -1585,6 +1585,80 @@
                     "description": "2 Gear(s) Returned"
                 }
             },
+            "neg_trips_download_response": {
+                "title": "Root Type for neg_trips_download_response",
+                "description": "",
+                "required": [
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable explanation of the request status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "neg_trips": [
+                                {
+                                    "trip_date": "01/12/2022",
+                                    "cf_license_nbr": "MAFISHER2",
+                                    "issuing_agency": "0018",
+                                    "vessel_name": " Deborah Ann",
+                                    "coast_guard_nbr": "8877991",
+                                    "vessel_permit": "555555",
+                                    "date_entered": "14-DEC-2022"
+                                },
+                                {
+                                    "trip_date": "05/12/2022",
+                                    "cf_license_nbr": "MAFISHER2",
+                                    "issuing_agency": "0018",
+                                    "vessel_name": "DUAL-PERMIT FED TEST VESSEL",
+                                    "coast_guard_nbr": "8877991",
+                                    "vessel_permit": "555555",
+                                    "date_entered": "14-DEC-2022"
+                                }
+                            ]
+                        }
+                    ],
+                    "status": "OK",
+                    "description:": "retrieved negative trip count: 5"
+                }
+            },
+            "neg_trips_download_request": {
+                "title": "Root Type for neg_trips_download_request",
+                "description": "",
+                "required": [
+                    "p_license_nbr",
+                    "p_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_license_nbr": {
+                        "description": "permit number/license number of the requested trips",
+                        "type": "string"
+                    },
+                    "p_date": {
+                        "format": "date",
+                        "description": "earliest negative trip report date requested. Format MM/DD/YYYY",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "p_license_nbr": "112233",
+                    "p_date": "11/14/2020"
+                }
+            },
             "attributes_list_response": {
                 "title": "ADDITIONAL_ATTRIBUTES",
                 "description": "",
