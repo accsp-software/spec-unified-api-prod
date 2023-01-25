@@ -773,7 +773,7 @@
                 "description": "send a set of trips rows to safis"
             }
         }
-    },
+    ,
     "components": {
         "schemas": {
             "user_permits_request": {
