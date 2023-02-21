@@ -528,43 +528,6 @@
                 "description": "fetch a list of errors from trip rows that did not load. Should be called after trips_upload call if one or moreerrored records are indicated"
             }
         },
-        "/trip_locations": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/locations"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "eTrips"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/trip_locations_response"
-                                }
-                            }
-                        },
-                        "description": "output of the endpoint"
-                    }
-                },
-                "security": [
-                    {
-                        "Confidential-API": [
-                        ]
-                    }
-                ],
-                "summary": "trip_locations",
-                "description": "send a set of trip location data rows to safis"
-            }
-        },
         "/lookup_list_by_attribute": {
             "post": {
                 "requestBody": {
