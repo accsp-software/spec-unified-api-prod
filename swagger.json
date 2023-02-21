@@ -703,6 +703,37 @@
                 "summary": "trips_upload ",
                 "description": "send a set of trips rows to safis"
             }
+        },
+        "/neg_trips_not_processed": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/neg_trips_download_request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "eTrips"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/neg_trips_download_response"
+                                }
+                            }
+                        },
+                        "description": "output of the endpoint"
+                    }
+                },
+                "summary": "neg_trips_not_processed",
+                "description": "This endpoint provides a list of negative (did not fish) trips submitted under the provided license (p_license_nbr) which either 1) did not fully process after being received by the ACCSP or 2) processed successfully but were subsequently deleted by a partner administrator."
+            }
         }
     },
     "components": {
@@ -5534,6 +5565,82 @@
                         "TRIP_ADDITIONAL_ATTRIBUTES",
                         "EFFORT_ADDITIONAL_ATTRIBUTES"
                     ]
+                }
+            },
+            "neg_trips_download_request": {
+                "title": "Root Type for neg_trips_download_request",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "p_license_nbr": {
+                        "description": "permit number/license number of the requested trips",
+                        "type": "string"
+                    },
+                    "p_date": {
+                        "description": "earliest negative trip report date requested. Format MM/DD/YYYY",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "p_license_nbr": "112233",
+                    "p_date": "11/14/2020"
+                }
+            },
+            "neg_trips_download_response": {
+                "title": "Root Type for neg_trips_download_response",
+                "description": "",
+                "required": [
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "writeOnly": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable explanation of the request status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "neg_trips": [
+                                {
+                                    "trip_date": "01/12/2022",
+                                    "cf_license_nbr": "MAFISHER2",
+                                    "issuing_agency": "0018",
+                                    "vessel_name": "Deborah Ann",
+                                    "coast_guard_nbr": "8877991",
+                                    "vessel_permit": "555555",
+                                    "date_entered": "14-DEC-2022"
+                                },
+                                {
+                                    "trip_date": "05/12/2022",
+                                    "cf_license_nbr": "MAFISHER2",
+                                    "issuing_agency": "0018",
+                                    "vessel_name": "DUAL-PERMIT FED TEST VESSEL",
+                                    "coast_guard_nbr": "8877991",
+                                    "vessel_permit": "555555",
+                                    "date_entered": "14-DEC-2022"
+                                }
+                            ]
+                        }
+                    ],
+                    "status": "OK",
+                    "description:": "retrieved negative trip count: 5"
                 }
             }
         },
