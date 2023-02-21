@@ -294,7 +294,7 @@
                                 }
                             }
                         },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
+                        "description": "output of the endpoint"
                     }
                 },
                 "security": [
@@ -552,7 +552,7 @@
                                 }
                             }
                         },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
+                        "description": "output of the endpoint"
                     }
                 },
                 "security": [
@@ -565,38 +565,6 @@
                 "description": "send a set of trip location data rows to safis"
             }
         },
-         "/neg_trips_not_processed": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/neg_trips_download_request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "eTrips"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/neg_trips_download_response"
-                                }
-                            }
-                        },
-                        "description": "output of the endpoint"
-                    }
-                },
-                "summary": "neg_trips_not_processed",
-                "description": "This endpoint provides a list of negative (did not fish) trips submitted under the provided license (p_license_nbr) which either 1) did not fully process after being received by the ACCSP or 2) processed successfully but were subsequently deleted by a partner administrator."
-            }
-        }
-    },
         "/lookup_list_by_attribute": {
             "post": {
                 "requestBody": {
@@ -696,7 +664,7 @@
                                 }
                             }
                         },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
+                        "description": "output of the endpoint"
                     }
                 },
                 "security": [
@@ -706,7 +674,7 @@
                     }
                 ],
                 "summary": "neg_trips_upload ",
-                "description": "The neg_trips_upload endpoint accepts multiple reports within a single API call (see example request).  However, to avoid unexpected validation failures we recommend sending reports from the same fishing license, participant and vessel within individual API calls.  Including different fishing licenses or vessels within a single API call may result in unexpected validation failures and misleading errors."
+                "description": "send a set of negative / no fishing trip reports to safis."
             }
         },
         "/trips_upload": {
@@ -760,7 +728,7 @@
                                 }
                             }
                         },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
+                        "description": "successful upload attempt"
                     }
                 },
                 "security": [
@@ -773,7 +741,7 @@
                 "description": "send a set of trips rows to safis"
             }
         }
-    ,
+    },
     "components": {
         "schemas": {
             "user_permits_request": {
@@ -1583,116 +1551,6 @@
                     ],
                     "status": "OK",
                     "description": "2 Gear(s) Returned"
-                }
-            },
-            "neg_trips_download_response": {
-                "title": "Root Type for neg_trips_download_response",
-                "description": "",
-                "required": [
-                    "status"
-                ],
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "TRIP_DATE": {
-                                    "description": "Date of trip taken",
-                                    "type": "string<date-time>"
-                                },
-                                "CF_LICENSE_NBR": {
-                                    "description": "Permit/License Number of Permit in use.",
-                                    "type": "string"
-                                },
-                                "ISSUING_AGENCY": {
-                                    "description": "4 character identifier of issuing agency of permit in use.",
-                                    "type": "string"
-                                },
-                                "VESSEL_NAME": {
-                                    "description": "name of the vessel in use.",
-                                    "type": "string"
-                                },
-                                "COAST_GUARD_NBR": {
-                                    "description": "Coast Guard Number/Hull Number of vessel. Required to provide either coast_guard_nbr or state_reg_nbr..",
-                                    "type": "string"
-                                },
-                                "VESSEL_PERMIT": {
-                                    "description": "Vessel Permit number of vessel in use..",
-                                    "type": "string"
-                                },
-                                "DATE_ENTERED": {
-                                    "description": "Date entered.",
-                                    "type": "string<date-time>"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the request",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "human readable explanation of the request status",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "neg_trips": [
-                                {
-                                    "trip_date": "01/12/2022",
-                                    "cf_license_nbr": "MAFISHER2",
-                                    "issuing_agency": "0018",
-                                    "vessel_name": " Deborah Ann",
-                                    "coast_guard_nbr": "8877991",
-                                    "vessel_permit": "555555",
-                                    "date_entered": "14-DEC-2022"
-                                },
-                                {
-                                    "trip_date": "05/12/2022",
-                                    "cf_license_nbr": "MAFISHER2",
-                                    "issuing_agency": "0018",
-                                    "vessel_name": "DUAL-PERMIT FED TEST VESSEL",
-                                    "coast_guard_nbr": "8877991",
-                                    "vessel_permit": "555555",
-                                    "date_entered": "14-DEC-2022"
-                                }
-                            ]
-                        }
-                    ],
-                    "status": "OK",
-                    "description:": "retrieved negative trip count: 5"
-                }
-            },
-            "neg_trips_download_request": {
-                "title": "Root Type for neg_trips_download_request",
-                "description": "",
-                "required": [
-                    "p_license_nbr",
-                    "p_date"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_license_nbr": {
-                        "description": "permit number/license number of the requested trips",
-                        "type": "string"
-                    },
-                    "p_date": {
-                        "format": "date",
-                        "description": "earliest negative trip report date requested. Format MM/DD/YYYY",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "p_license_nbr": "112233",
-                    "p_date": "11/14/2020"
                 }
             },
             "attributes_list_response": {
@@ -5740,4 +5598,3 @@
         }
     ]
 }
-
