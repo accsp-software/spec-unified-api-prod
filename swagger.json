@@ -4646,16 +4646,14 @@
                                     "agency": "0016",
                                     "in_use": "Y",
                                     "start_date": "05/01/2022",
-                                    "end_date": "04/30/2023",
-                                    "permit_type_list": "BLU 1"
+                                    "end_date": "04/30/2023"
                                 },
                                 {
                                     "num": "610395",
                                     "agency": "0018",
                                     "in_use": "Y",
                                     "start_date": "05/01/2022",
-                                    "end_date": "04/30/2023",
-                                    "permit_type_list": "BLU 1"
+                                    "end_date": "04/30/2023"
                                 }
                             ],
                             "in_use": "Y"
@@ -4671,16 +4669,14 @@
                                     "agency": "0016",
                                     "in_use": "Y",
                                     "start_date": "05/01/2022",
-                                    "end_date": "04/30/2023",
-                                    "permit_type_list": "BLU 1"
+                                    "end_date": "04/30/2023"
                                 },
                                 {
                                     "num": "556363",
                                     "agency": "0018",
                                     "in_use": "Y",
                                     "start_date": "05/01/2022",
-                                    "end_date": "04/30/2023",
-                                    "permit_type_list": "BLU 1"
+                                    "end_date": "04/30/2023"
                                 }
                             ],
                             "in_use": "Y"
