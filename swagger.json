@@ -671,43 +671,6 @@
                 "description": "This endpoint provides a list of negative (did not fish) trips submitted under the provided license (p_license_nbr) which either 1) did not fully process after being received by the ACCSP or 2) processed successfully but were subsequently deleted by a partner administrator."
             }
         },
-        "/trip_locations": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/locations"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "eTrips"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/trip_locations_response"
-                                }
-                            }
-                        },
-                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
-                    }
-                },
-                "security": [
-                    {
-                        "Confidential-API": [
-                        ]
-                    }
-                ],
-                "summary": "trip_locations",
-                "description": "This endpoint is used to send a set of trip locations to SAFIS. Records in the locations array should include a timestamp in UTC format. The ACCSP API expects a 'Z' or Zulu offset (e.g. 2021-11-26T18:31:30Z) and timestamps submitted without a time offset will be interpreted as not having one. Location records should also include latitude and longitude (5-decimal precision) within the range 20 to 50 and -100 to -60, respectively. See Request Sample. A vessel coast number or state registration number is required, if both values are sent the coast guard number will be used to validate the vessel."
-            }
-        },
         "/trips_upload": {
             "post": {
                 "requestBody": {
@@ -770,6 +733,43 @@
                 ],
                 "summary": "trips_upload ",
                 "description": "send a set of trips rows to safis. Resubmissions of trips previously submitted and processed successfully should include the accsp_trip_id (provided in response for successful submissions) and a trip_update flag (set value to Y). See example request."
+            }
+        },
+        "/trip_locations": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/locations"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "eTrips"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/trip_locations_response"
+                                }
+                            }
+                        },
+                        "description": "A HTTP status code 200/OK refers to the status of the HTTP request and does not indicate whether or not ACCSP data validations were successful. Data validation errors are generated during record processing and are returned as “errors” in the response."
+                    }
+                },
+                "security": [
+                    {
+                        "Confidential-API": [
+                        ]
+                    }
+                ],
+                "summary": "trip_locations",
+                "description": "This endpoint is used to send a set of trip locations to SAFIS. Records in the locations array should include a timestamp in UTC format. The ACCSP API expects a 'Z' or Zulu offset (e.g. 2021-11-26T18:31:30Z) and timestamps submitted without a time offset will be interpreted as not having one. Location records should also include latitude and longitude (5-decimal precision) within the range 20 to 50 and -100 to -60, respectively. See Request Sample. A vessel coast guard number or state registration number is required, if both values are sent the coast guard number will be used to validate the vessel.  "
             }
         }
     },
@@ -5153,61 +5153,6 @@
                     "hours_days_flag": "H"
                 }
             },
-            "locations": {
-                "title": "Root Type for locations",
-                "description": "",
-                "required": [
-                    "locations"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_supplier_trip_id": {
-                        "description": "unique trip id given by the requesting entity",
-                        "type": "string"
-                    },
-                    "p_trip_id": {
-                        "description": "ACCSP trip id IF known. ",
-                        "type": "string"
-                    },
-                    "p_vendor_id": {
-                        "description": "vendor id of the device sending records",
-                        "type": "string"
-                    },
-                    "p_vessel_cgn": {
-                        "description": "US Coast Guard number/hull number",
-                        "type": "string"
-                    },
-                    "p_vessel_srn": {
-                        "description": "vessel state registration number",
-                        "type": "string"
-                    },
-                    "locations": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/location"
-                        }
-                    }
-                },
-                "example": {
-                    "p_supplier_trip_id": "55590000003",
-                    "p_trip_id": "900000003",
-                    "p_vendor_id": "1233345",
-                    "p_vessel_cgn": "MS4564AX",
-                    "locations": [
-                        {
-                            "latitude": "43.31238",
-                            "longitude": "-70.11428",
-                            "timestamp": "20191225131755"
-                        },
-                        {
-                            "latitude": "42.32238",
-                            "longitude": "-70.11628",
-                            "timestamp": "20191225131845"
-                        }
-                    ]
-                }
-            },
             "lookup_list_request": {
                 "title": "Root Type for lookup_list_request",
                 "description": "",
@@ -5748,6 +5693,61 @@
                         {
                             "code": "040",
                             "value": "Y"
+                        }
+                    ]
+                }
+            },
+            "locations": {
+                "title": "Root Type for locations",
+                "description": "",
+                "required": [
+                    "locations"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_supplier_trip_id": {
+                        "description": "unique trip id given by the requesting entity",
+                        "type": "string"
+                    },
+                    "p_trip_id": {
+                        "description": "ACCSP trip id IF known. ",
+                        "type": "string"
+                    },
+                    "p_vendor_id": {
+                        "description": "vendor id of the device sending records",
+                        "type": "string"
+                    },
+                    "p_vessel_cgn": {
+                        "description": "US Coast Guard number",
+                        "type": "string"
+                    },
+                    "p_vessel_srn": {
+                        "description": "vessel state registration number",
+                        "type": "string"
+                    },
+                    "locations": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/location"
+                        }
+                    }
+                },
+                "example": {
+                    "p_supplier_trip_id": "55590000003",
+                    "p_trip_id": "900000003",
+                    "p_vendor_id": "1233345",
+                    "p_vessel_cgn": "MS4564AX",
+                    "locations": [
+                        {
+                            "latitude": "43.31238",
+                            "longitude": "-70.11428",
+                            "timestamp": "20191225131755"
+                        },
+                        {
+                            "latitude": "42.32238",
+                            "longitude": "-70.11628",
+                            "timestamp": "20191225131845"
                         }
                     ]
                 }
