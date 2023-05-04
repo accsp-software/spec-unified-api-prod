@@ -966,36 +966,6 @@
                 "description": "",
                 "type": "object"
             },
-            "location": {
-                "title": "Root Type for location",
-                "description": "single location",
-                "required": [
-                    "latitude",
-                    "longitude",
-                    "timestamp"
-                ],
-                "type": "object",
-                "properties": {
-                    "latitude": {
-                        "description": "latitude in decimal degrees",
-                        "type": "string"
-                    },
-                    "longitude": {
-                        "description": "longitude in decimal degrees",
-                        "type": "string"
-                    },
-                    "timestamp": {
-                        "format": "date-time",
-                        "description": "timestamp in format: YYYYMMDDhh24miss",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "latitude": "43.31238",
-                    "longitude": "-70.11428",
-                    "timestamp": "20191225131755"
-                }
-            },
             "trip_locations_response": {
                 "title": "Root Type for trip_locations_response",
                 "description": "",
@@ -5697,20 +5667,54 @@
                     ]
                 }
             },
+            "location": {
+                "title": "Root Type for location",
+                "description": "single location",
+                "required": [
+                    "latitude",
+                    "longitude",
+                    "timestamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "latitude": {
+                        "description": "latitude in decimal degrees of 5 decimal precision and (range 20 to 50)",
+                        "type": "string"
+                    },
+                    "longitude": {
+                        "description": "longitude in decimal degrees of 5 decimal precision and (range -100 to -60)",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "format": "date-time",
+                        "description": "timestamp in UTC format: YYYY-MM-DDThh24:mi:ssZ",
+                        "type": "string"
+                    },
+                    "horizontal_acc": {
+                        "description": "horizontal accuracy",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "latitude": "some text",
+                    "longitude": "some text",
+                    "timestamp": "2018-02-10T09:30Z",
+                    "horizontal_acc": "1.0"
+                }
+            },
             "locations": {
                 "title": "Root Type for locations",
                 "description": "",
                 "required": [
-                    "locations"
+                    "locations",
+                    "p_vessel_cgn",
+                    "p_vessel_srn",
+                    "p_device_id"
                 ],
                 "type": "object",
                 "properties": {
                     "p_supplier_trip_id": {
                         "description": "unique trip id given by the requesting entity",
-                        "type": "string"
-                    },
-                    "p_trip_id": {
-                        "description": "ACCSP trip id IF known. ",
                         "type": "string"
                     },
                     "p_vendor_id": {
@@ -5725,6 +5729,10 @@
                         "description": "vessel state registration number",
                         "type": "string"
                     },
+                    "p_device_id": {
+                        "description": "unique identifier of device sending location data",
+                        "type": "string."
+                    },
                     "locations": {
                         "description": "",
                         "type": "array",
@@ -5734,20 +5742,23 @@
                     }
                 },
                 "example": {
+                    "p_device_id": "ABC123CDE456",
                     "p_supplier_trip_id": "55590000003",
-                    "p_trip_id": "900000003",
                     "p_vendor_id": "1233345",
                     "p_vessel_cgn": "MS4564AX",
+                    "p_vessel_srn": "",
                     "locations": [
                         {
                             "latitude": "43.31238",
                             "longitude": "-70.11428",
-                            "timestamp": "20191225131755"
+                            "timestamp": "2021-10-26T18:31:30Z",
+                            "horizontal_acc": "1.0"
                         },
                         {
                             "latitude": "42.32238",
                             "longitude": "-70.11628",
-                            "timestamp": "20191225131845"
+                            "timestamp": "2021-10-26T18:31:44Z",
+                            "horizontal_acc": "1.0"
                         }
                     ]
                 }
