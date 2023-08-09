@@ -966,62 +966,6 @@
                 "description": "",
                 "type": "object"
             },
-            "trip_locations_response": {
-                "title": "Root Type for trip_locations_response",
-                "description": "",
-                "type": "object",
-                "properties": {
-                    "row": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "trip_id": {
-                                    "description": "ACCSP Trip id of the record that was matched.",
-                                    "type": "string"
-                                },
-                                "supplier_trip_id": {
-                                    "description": "Associated supplier_trip that was given in the request.",
-                                    "type": "string"
-                                },
-                                "upload_date": {
-                                    "format": "date-time",
-                                    "description": "date of upload request.",
-                                    "type": "string"
-                                },
-                                "total_count": {
-                                    "description": "Total number of location records that were passed into the upload.",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "status": {
-                        "description": "status of the upload attempt",
-                        "enum": [
-                            "OK",
-                            "FAIL"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "Human readable description of the status reason or failure.",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "row": [
-                        {
-                            "trip_id": "900000003",
-                            "supplier_trip_id": "55590000003",
-                            "upload_date": "2019-12-06 10:25:03",
-                            "total_count": "3"
-                        }
-                    ],
-                    "status": "OK",
-                    "description": "Total rows inserted 3"
-                }
-            },
             "lookup_list_attribute_request": {
                 "title": "Root Type for lookup_list_attribute_request",
                 "description": "",
@@ -5763,6 +5707,57 @@
                             "horizontal_acc": "1.0"
                         }
                     ]
+                }
+            },
+            "trip_locations_response": {
+                "title": "Root Type for trip_locations_response",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_trip_id": {
+                                    "description": "Associated supplier_trip that was given in the request.",
+                                    "type": "string"
+                                },
+                                "upload_date": {
+                                    "format": "date-time",
+                                    "description": "date of upload request.",
+                                    "type": "string"
+                                },
+                                "total_count": {
+                                    "description": "Total number of location records that were passed into the upload.",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the upload attempt",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Human readable description of the status reason or failure.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "supplier_trip_id": "55590000003",
+                            "upload_date": "2019-12-06 10:25:03",
+                            "total_count": "3"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "Total rows inserted 3"
                 }
             }
         },
