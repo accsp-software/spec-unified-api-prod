@@ -565,44 +565,6 @@
                 "description": "fetch a set of rows for specified attribute lookup list. Used in combination with _additional_attributes lookup_list"
             }
         },
-        "/lookup_list": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/lookup_list_request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "eTrips",
-                    "eDR"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/lookup_list_responses"
-                                }
-                            }
-                        },
-                        "description": "Successful Response"
-                    }
-                },
-                "security": [
-                    {
-                        "Non-Confidential": [
-                        ]
-                    }
-                ],
-                "summary": "lookup_list",
-                "description": "fetch a set of rows for a specified lookup table.\n\nAll lists accept the p_partner parameter and are partner specific with the exception of VESSELS, PORTS, USER_NOTIFICATIONS and VMS_LANDING_LOCATIONS."
-            }
-        },
         "/neg_trips_upload": {
             "post": {
                 "requestBody": {
@@ -770,6 +732,44 @@
                 ],
                 "summary": "trip_locations",
                 "description": "This endpoint is used to send a set of trip locations to SAFIS. Records in the locations array should include a timestamp in UTC format. The ACCSP API expects a 'Z' or Zulu offset (e.g. 2021-11-26T18:31:30Z) and timestamps submitted without a time offset will be interpreted as not having one. Location records should also include latitude and longitude (5-decimal precision) within the range 20 to 50 and -100 to -60, respectively. See Request Sample. A vessel coast guard number or state registration number is required, if both values are sent the coast guard number will be used to validate the vessel.  "
+            }
+        },
+        "/lookup_list": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/lookup_list_request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "eTrips",
+                    "eDR"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/lookup_list_responses"
+                                }
+                            }
+                        },
+                        "description": "Successful Response"
+                    }
+                },
+                "security": [
+                    {
+                        "Non-Confidential": [
+                        ]
+                    }
+                ],
+                "summary": "lookup_list",
+                "description": "fetch a set of rows for a specified lookup table.\n\nAll lists accept the p_partner parameter and are partner specific with the exception of VESSELS, PORTS, USER_NOTIFICATIONS, VMS_LANDING_LOCATIONS and TRIP_PROCESSED.\n\n All vessels returned are federally permitted vessels. "
             }
         }
     },
@@ -961,6 +961,9 @@
                     },
                     {
                         "$ref": "#/components/schemas/vms_landing_locations_response"
+                    },
+                    {
+                        "$ref": "#/components/schemas/trip_processed_response"
                     }
                 ],
                 "description": "",
@@ -5071,58 +5074,6 @@
                     "hours_days_flag": "H"
                 }
             },
-            "lookup_list_request": {
-                "title": "Root Type for lookup_list_request",
-                "description": "",
-                "required": [
-                    "p_listname",
-                    "p_partner"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_partner": {
-                        "description": "4 character value of permit issuing agency",
-                        "type": "string"
-                    },
-                    "p_listname": {
-                        "description": "Lookup list name being requested",
-                        "enum": [
-                            "GEARS",
-                            "GEAR_ATTRIBUTES",
-                            "TRIP_ADDITIONAL_ATTRIBUTES",
-                            "EFFORT_ADDITIONAL_ATTRIBUTES",
-                            "PARTNER_MANAGED_SPECIES",
-                            "DISPOSITION",
-                            "AREASFISHED",
-                            "SPECIES",
-                            "CATCH_SOURCE",
-                            "USER_NOTIFICATIONS",
-                            "PARTICIPANTS",
-                            "VESSELS",
-                            "SWIPE_CARDS",
-                            "TRIP_ACTIVITY",
-                            "PORTS",
-                            "DEALERS",
-                            "PARTNER_MANAGED_NOTIFICATIONS",
-                            "SALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES",
-                            "VMS_LANDING_LOCATIONS",
-                            "GARFO_ACCSP_GEAR_MAPPING"
-                        ],
-                        "type": "string"
-                    },
-                    "p_lastdate": {
-                        "format": "date-time",
-                        "description": "oldest date of changes requested. Format MM/DD/YYYY hh24:mi",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "p_partner": "0023",
-                    "p_listname": "GEARS",
-                    "p_listtype": "EDR",
-                    "p_lastdate": "12/27/2010 14:45:00 "
-                }
-            },
             "lookup_list_date_changed_request": {
                 "title": "Root Type for lookup_list_date_changed_request",
                 "description": "",
@@ -5758,6 +5709,127 @@
                     ],
                     "status": "OK",
                     "description": "Total rows inserted 3"
+                }
+            },
+            "lookup_list_request": {
+                "title": "Root Type for lookup_list_request",
+                "description": "",
+                "required": [
+                    "p_listname",
+                    "p_partner"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_partner": {
+                        "description": "4 character value of permit issuing agency",
+                        "type": "string"
+                    },
+                    "p_listname": {
+                        "description": "Lookup list name being requested",
+                        "enum": [
+                            "GEARS",
+                            "GEAR_ATTRIBUTES",
+                            "TRIP_ADDITIONAL_ATTRIBUTES",
+                            "EFFORT_ADDITIONAL_ATTRIBUTES",
+                            "PARTNER_MANAGED_SPECIES",
+                            "DISPOSITION",
+                            "AREASFISHED",
+                            "SPECIES",
+                            "CATCH_SOURCE",
+                            "USER_NOTIFICATIONS",
+                            "PARTICIPANTS",
+                            "VESSELS",
+                            "SWIPE_CARDS",
+                            "TRIP_ACTIVITY",
+                            "PORTS",
+                            "DEALERS",
+                            "PARTNER_MANAGED_NOTIFICATIONS",
+                            "SALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES",
+                            "VMS_LANDING_LOCATIONS",
+                            "GARFO_ACCSP_GEAR_MAPPING",
+                            "TRIP_PROCESSED"
+                        ],
+                        "type": "string"
+                    },
+                    "p_lastdate": {
+                        "format": "date-time",
+                        "description": "oldest date of changes requested. Format MM/DD/YYYY hh24:mi",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "p_partner": "0023",
+                    "p_listname": "GEARS",
+                    "p_listtype": "EDR",
+                    "p_lastdate": "12/27/2010 14:45:00 "
+                }
+            },
+            "trip_processed_request": {
+                "title": "Root Type for trip_processed_request",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "p_listname": {
+                        "type": "string"
+                    },
+                    "p_supplier_trip_id": {
+                        "description": "Associated supplier_trip that was given in the request.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "p_listname": "TRIP_PROCESSED",
+                    "p_supplier_trip_id": "123456789"
+                }
+            },
+            "trip_processed_response": {
+                "title": "TRIP_PROCESSED",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "event_id": {
+                                    "description": "the last event_id assosiated with trip_processed.",
+                                    "type": "string"
+                                },
+                                "accsp_trip_id": {
+                                    "description": "Associated accsp trip id that was given  if trip is processed.",
+                                    "type": "string"
+                                },
+                                "processed": {
+                                    "description": "trip is processed or not on accsp database.",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of the status of request",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "event_id": "12345",
+                            "accsp_trip_id": "012345",
+                            "processed": "Y"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "processed status of trip returned."
                 }
             }
         },
