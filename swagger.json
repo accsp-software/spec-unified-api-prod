@@ -769,7 +769,7 @@
                     }
                 ],
                 "summary": "lookup_list",
-                "description": "fetch a set of rows for a specified lookup table.\n\nAll lists accept the p_partner parameter and are partner specific with the exception of VESSELS, PORTS, USER_NOTIFICATIONS, VMS_LANDING_LOCATIONS, TRIP_PROCESSED, HMS_TARGET_SPECIES and HMS_GEARS.\n\n All vessels returned are federally permitted vessels. "
+                "description": "fetch a set of rows for a specified lookup table.\n\nAll lists accept the p_partner parameter and are partner specific with the exception of VESSELS, PORTS, USER_NOTIFICATIONS, VMS_LANDING_LOCATIONS, TRIP_PROCESSED, HMS_TARGET_SPECIES and HMS_GEARS,PARTNER_MANAGED_FOOTER.\n\n All vessels returned are federally permitted vessels. "
             }
         }
     },
@@ -967,6 +967,9 @@
                     },
                     {
                         "$ref": "#/components/schemas/HMS_TARGET_SPECIES_response"
+                    },
+                    {
+                        "$ref": "#/components/schemas/PARTNER_MANAGED_FOOTER"
                     }
                 ],
                 "description": "",
@@ -5219,60 +5222,6 @@
                     ]
                 }
             },
-            "lookup_list_request": {
-                "title": "Root Type for lookup_list_request",
-                "description": "",
-                "required": [
-                    "p_listname",
-                    "p_partner"
-                ],
-                "type": "object",
-                "properties": {
-                    "p_partner": {
-                        "description": "4 character value of permit issuing agency",
-                        "type": "string"
-                    },
-                    "p_listname": {
-                        "description": "Lookup list name being requested",
-                        "enum": [
-                            "GEARS",
-                            "GEAR_ATTRIBUTES",
-                            "TRIP_ADDITIONAL_ATTRIBUTES",
-                            "EFFORT_ADDITIONAL_ATTRIBUTES",
-                            "PARTNER_MANAGED_SPECIES",
-                            "DISPOSITION",
-                            "AREASFISHED",
-                            "SPECIES",
-                            "CATCH_SOURCE",
-                            "USER_NOTIFICATIONS",
-                            "PARTICIPANTS",
-                            "VESSELS",
-                            "SWIPE_CARDS",
-                            "TRIP_ACTIVITY",
-                            "PORTS",
-                            "DEALERS",
-                            "PARTNER_MANAGED_NOTIFICATIONS",
-                            "SALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES",
-                            "VMS_LANDING_LOCATIONS",
-                            "GARFO_ACCSP_GEAR_MAPPING",
-                            "TRIP_PROCESSED",
-                            "HMS_TARGET_SPECIES"
-                        ],
-                        "type": "string"
-                    },
-                    "p_lastdate": {
-                        "format": "date-time",
-                        "description": "oldest date of changes requested. Format MM/DD/YYYY hh24:mi",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "p_partner": "0023",
-                    "p_listname": "GEARS",
-                    "p_listtype": "EDR",
-                    "p_lastdate": "12/27/2010 14:45:00 "
-                }
-            },
             "HMS_TARGET_SPECIES_response": {
                 "title": "HMS_TARGET_SPECIES",
                 "description": "",
@@ -6101,6 +6050,212 @@
                             "value": "Y"
                         }
                     ]
+                }
+            },
+            "lookup_list_request": {
+                "title": "Root Type for lookup_list_request",
+                "description": "",
+                "required": [
+                    "p_listname",
+                    "p_partner"
+                ],
+                "type": "object",
+                "properties": {
+                    "p_partner": {
+                        "description": "4 character value of permit issuing agency",
+                        "type": "string"
+                    },
+                    "p_listname": {
+                        "description": "Lookup list name being requested",
+                        "enum": [
+                            "GEARS",
+                            "GEAR_ATTRIBUTES",
+                            "TRIP_ADDITIONAL_ATTRIBUTES",
+                            "EFFORT_ADDITIONAL_ATTRIBUTES",
+                            "PARTNER_MANAGED_SPECIES",
+                            "PARTNER_MANAGED_FOOTER",
+                            "DISPOSITION",
+                            "AREASFISHED",
+                            "SPECIES",
+                            "CATCH_SOURCE",
+                            "USER_NOTIFICATIONS",
+                            "PARTICIPANTS",
+                            "VESSELS",
+                            "SWIPE_CARDS",
+                            "TRIP_ACTIVITY",
+                            "PORTS",
+                            "DEALERS",
+                            "PARTNER_MANAGED_NOTIFICATIONS",
+                            "SALE_DISPOSITIONS_ADDITIONAL_ATTRIBUTES",
+                            "VMS_LANDING_LOCATIONS",
+                            "GARFO_ACCSP_GEAR_MAPPING",
+                            "TRIP_PROCESSED",
+                            "HMS_TARGET_SPECIES"
+                        ],
+                        "type": "string"
+                    },
+                    "p_lastdate": {
+                        "format": "date-time",
+                        "description": "oldest date of changes requested. Format MM/DD/YYYY hh24:mi",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "p_partner": "0023",
+                    "p_listname": "GEARS",
+                    "p_listtype": "EDR",
+                    "p_lastdate": "12/27/2010 14:45:00 "
+                }
+            },
+            "PARTNER_MANAGED_FOOTER": {
+                "title": "PARTNER_MANAGED_FOOTER",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "row": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "partner_id": {
+                                    "type": "string"
+                                },
+                                "attribute_code": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "partner_element_name": {
+                                    "type": "string"
+                                },
+                                "partner_help_text": {
+                                    "type": "string"
+                                },
+                                "switchboard_behavior": {
+                                    "type": "string"
+                                },
+                                "condition_field": {
+                                    "type": "string"
+                                },
+                                "condition_value": {
+                                    "type": "string"
+                                },
+                                "component_id": {
+                                    "type": "string"
+                                },
+                                "component_desc": {
+                                    "type": "string"
+                                },
+                                "comm_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_charter_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in for hire charter trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "for_hire_hb_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in For-Hire Headboat trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "rec_flag": {
+                                    "description": "indicates if attribute is required (R), optional (Y) or Not displayed (N) in Recreational trip",
+                                    "enum": [
+                                        "R",
+                                        "Y",
+                                        "N"
+                                    ],
+                                    "type": "string"
+                                },
+                                "in_use": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "description": "status of the request",
+                        "enum": [
+                            "OK",
+                            "FAIL"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "human readable description of the result status",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "row": [
+                        {
+                            "partner_id": "0016",
+                            "attribute_code": 180,
+                            "partner_element_name": "Total Number of Pots in Water",
+                            "partner_help_text": "At the start of the trip, the total number of pots in all areas.",
+                            "switchboard_behavior": "G",
+                            "condition_field": "GEAR_CODE",
+                            "condition_value": "160",
+                            "type": "NUMBER",
+                            "component_id": "T",
+                            "component_desc": "Trip Header",
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "R",
+                            "for_hire_hb_flag": "R",
+                            "rec_flag": "R",
+                            "in_use": "Y"
+                        },
+                        {
+                            "partner_id": "0016",
+                            "attribute_code": 181,
+                            "partner_element_name": "Total Number of Buoy Lines in Water",
+                            "partner_help_text": "At the start of the trip, the total number of buoy lines in all areas.",
+                            "switchboard_behavior": "G",
+                            "condition_field": "GEAR_CODE",
+                            "condition_value": "160",
+                            "type": "NUMBER",
+                            "component_id": "T",
+                            "component_desc": "Trip Header",
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "R",
+                            "for_hire_hb_flag": "R",
+                            "rec_flag": "R",
+                            "in_use": "Y"
+                        },
+                        {
+                            "partner_id": "0016",
+                            "attribute_code": 182,
+                            "partner_element_name": "Total Average Number of Pots Per String in Water",
+                            "partner_help_text": "At the start of the trip, the average number of pots per string in all areas.",
+                            "switchboard_behavior": "G",
+                            "condition_field": "GEAR_CODE",
+                            "condition_value": "160",
+                            "type": "NUMBER",
+                            "component_id": "T",
+                            "component_desc": "Trip Header",
+                            "comm_flag": "R",
+                            "for_hire_charter_flag": "R",
+                            "for_hire_hb_flag": "R",
+                            "rec_flag": "R",
+                            "in_use": "Y"
+                        }
+                    ],
+                    "status": "OK",
+                    "description": "3 Attribute(s) Returned."
                 }
             }
         },
