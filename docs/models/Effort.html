@@ -1,0 +1,98 @@
+
+<h2>Effort</h2>
+<ul class="parameter">
+  <li class="param-required-true">distance : String
+    <br/>Distance from shore of fishing location.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">in_state : String
+    <br/>State postal if fishing in state waters.  &#x27;US&#x27; if fishing in federal waters.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">area_code : String
+    <br/>3 character area-code of fishing location.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">sub_area_code : String
+    <br/>4 character sub-area code of fishing location.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">local_area_code : String
+    <br/>Local-area code of fishing location.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">latitude : String
+    <br/>Latitude of effort in decimal degrees.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">longitude : String
+    <br/>Longitude of effort in decimal degrees.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">gear : String
+    <br/>Gear code used in this effort.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">gear_quantity : String
+    <br/>Quantity of gear used.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">fishing_hours : String
+    <br/>Total amount of active fishing time in this effort.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">hours_days : String
+    <br/>Hours or Days indicator of fishing time
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>H</dd>
+            <dd>D</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">total_gear : String
+    <br/>Total gear in water.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">gear_size : String
+    <br/>Indicates how mesh size wass measured. Stretch Size (S) or Mesh length and width (M).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">supplier_effort_id : String
+    <br/>Unique effort id given by the caller. Only used to communicate errors and updates.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">anything_caught : String
+    <br/>anything caught flag (Y, N for YES, NO respectively).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">catches : List
+    <br/>Collection of catches made with this effort
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">gear_attributes : List
+    <br/>Collection of supplemental attributes defining the gear configuration or effort.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">effort_additional_attributes : List
+    <br/>Collection of supplemental attributes defining the effort.
+  </li>
+</ul>

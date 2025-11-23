@@ -1,0 +1,97 @@
+
+<h2>Dealer_report</h2>
+<ul class="parameter">
+  <li class="param-required-false">report_update : String
+    <br/>is this a report update or an insertion..
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">accsp_report_id : String
+    <br/>accsp report id of the report to be updated.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">state_reg_nbr : String
+    <br/>State Registration number of vessel. If no vessel used, provide &#x27;FROM_SHORE&#x27;. Required to provide either coast_guard_nbr or state_reg_nbr.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">coast_guard_nbr : String
+    <br/>coast guard number of a vessel. If no vessel used, provide &#x27;FROM_SHORE&#x27;. Required to provide either coast_guard_nbr or state_reg_nbr.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">landing_date : date
+    <br/>Landing Date of report. Format MM/DD/YYYY
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">date_of_pur : date
+    <br/>Purchase date. Format MM/DD/YYYY
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">dea_license_nbr : String
+    <br/>Permit/License Number of Dealer in use
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">dea_partner_id : String
+    <br/>4 character identifier of issuing agency of dealer permit in use
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">supplier_dr_id : String
+    <br/>unique report id given by the caller. Only used to communicate errors and updates.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">cf_license_nbr : String
+    <br/>Permit/License Number of fisherman purchased from.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">cf_partner_id : String
+    <br/>4 character identifier of issuing agency of fisherman permit in use
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">submit_method : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">date_submitted : String
+    <br/>date submitted
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">port : String
+    <br/>Landing Port of Vessel
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">applicationversion : String
+    <br/>version number of the application
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">platform : String
+    <br/>platform used
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">user_submission_handle : String
+    <br/>file name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">report_additional_attributes : List
+    <br/>Collection of additional attribute
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">landings : List
+    <br/>Collection of landings in this dealer report.
+  </li>
+</ul>

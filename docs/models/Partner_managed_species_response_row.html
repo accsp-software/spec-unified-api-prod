@@ -1,0 +1,120 @@
+
+<h2>Partner_managed_species_response_row</h2>
+<ul class="parameter">
+  <li class="param-required-false">attribute_code : Integer
+    <br/>unique attribute code/id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">attribute_name : String
+    <br/>name of attribute
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">attribute_desc : String
+    <br/>accompanying help text
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">species_itis : String
+    <br/>ITIS code of species
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">type : String
+    <br/>format of attribute.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>NUMBER*</dd>
+            <dd>STRING</dd>
+            <dd>DATE</dd>
+            <dd>TIMESTAMP</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">list_type : String
+    <br/>denotes whether list returned is static (S) or dynamic(D)
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>S</dd>
+            <dd>D</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">options : List
+    <br/>JSON key-value pairs showing the return and display value of static list items respectively
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">order_seq : Integer
+    <br/>display order of attribute relative to others
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">attribute_count : String
+    <br/>expected number of values returned. default is Single(S). Multiple (M).
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>S</dd>
+            <dd>M</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comm_flag : String
+    <br/>indicates if attribute is required (R), optional (Y) or Not displayed (N) in commercial trip
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>R</dd>
+            <dd>Y</dd>
+            <dd>N</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">for_hire_charter_flag : String
+    <br/>indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire charter trip
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>R</dd>
+            <dd>Y</dd>
+            <dd>N</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">for_hire_hb_flag : String
+    <br/>indicates if attribute is required (R), optional (Y) or Not displayed (N) in for-hire headboat trip
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>R</dd>
+            <dd>Y</dd>
+            <dd>N</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">rec_flag : String
+    <br/>indicates if attribute is required (R), optional (Y) or Not displayed (N) in recreational trip
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>R</dd>
+            <dd>Y</dd>
+            <dd>N</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">limit_to_groups : partner_managed_species_response_limit_to_groups
+    <br/>
+  </li>
+</ul>

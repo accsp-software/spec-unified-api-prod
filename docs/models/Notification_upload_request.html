@@ -1,0 +1,62 @@
+
+<h2>Notification_upload_request</h2>
+<ul class="parameter">
+  <li class="param-required-true">p_license_nbr : String
+    <br/>alphanumeric value representing a user&#x27;s license number.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_partner : String
+    <br/>Partner or issuing agency code.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_participant_id : String
+    <br/>Participant id of a participant associated with p_license_nbr
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_vessel_cgn : String
+    <br/>vessel coast guard number.  a vessel coast guard or state registration number is required.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_vessel_srn : String
+    <br/>vessel state registration number.  a vessel coast guard or state registration number is required.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_trip_type : String
+    <br/>code to define the type of trip.  allowed values are C &#x3D; Commercial, R &#x3D; Recreational, H &#x3D; For Hire-Headboat, A &#x3D; For Hire-Charter. 
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_device_id : String
+    <br/>unique identification of a device. 
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_start_date : date
+    <br/>trip start date in format MM/DD/YYYY.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_start_time : String
+    <br/>trip start time in format HHMM.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_arrival_port : String
+    <br/>port code for the arrival (ending) port.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_notif_type : String
+    <br/>trip notification type being submitted.  Allowed values are 1 &#x3D; Pre Trip, 2 &#x3D;    Fishing, 3 &#x3D; Landing, 4 &#x3D; Post-Trip, 5 &#x3D; Cancellation, 6 &#x3D; Hail Out, and 7 &#x3D; Closed.  If no value is provided, Hail Out (Type &#x3D; 6) is used as the default.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">partner_attributes : List
+    <br/>list of optional partner-managed notification attributes submitted as a JSON array.
+  </li>
+</ul>

@@ -1,0 +1,25 @@
+
+<h2>Permit_endorsements_request</h2>
+<ul class="parameter">
+  <li class="param-required-true">p_partner : String
+    <br/>4 character value of permit issuing agency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">p_listname : String
+    <br/>name of endorsement list requested
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>VESSELS_ON_LICENSE</dd>
+            <dd>ENDORSEMENTS_ON_LICENSE</dd>
+            <dd>SPECIES_BY_ENDORSEMENT</dd>
+            <dd>SPECIES_BY_LICENSE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">p_lastdate : Date
+    <br/>oldest date of changes requested. Format MM/DD/YYYY hh24:mi
+  </li>
+</ul>

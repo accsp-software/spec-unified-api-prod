@@ -1,0 +1,84 @@
+
+<h2>Participant</h2>
+<ul class="parameter">
+  <li class="param-required-true">supplier_user_id : String
+    <br/>unique identifier for this user. Used to communicate back errors and for updates
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">email : String
+    <br/>users valid email address
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">first_name : String
+    <br/>user&#x27;s legal first name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">last_name : String
+    <br/>users legal last name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">birth_date : date
+    <br/>date of birth. Format MM/DD/YYYY
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">iss_agency : String
+    <br/>4 character identification of license issuing agency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">license_nbr : String
+    <br/>license/permit number given by the issuing agency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">address_1 : String
+    <br/>address line 1
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">address_2 : String
+    <br/>address line 2
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">city : String
+    <br/>address city
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">state : String
+    <br/>US State or Territory
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">county : String
+    <br/>address county
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">postal_code : String
+    <br/>US Postal Code
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">phone_nbr : String
+    <br/>users 10 digit phone number
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">license_type : String
+    <br/>The type of license based on expected trip types. 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>COMMERCIAL</dd>
+            <dd>FOR-HIRE</dd>
+            <dd>MYFISHCOUNT</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>

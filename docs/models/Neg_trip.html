@@ -1,0 +1,42 @@
+
+<h2>Neg_trip</h2>
+<ul class="parameter">
+  <li class="param-required-true">supplier_row_id : String
+    <br/>unique identifier given by sender. Useful for updating information and retrieving errors. 
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">iss_agency : String
+    <br/>4 digit identification of the issuing agency of permit
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">start_date : date
+    <br/>start date of the negative/no fishing report
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">end_date : date
+    <br/>last date of negative report if a range is being given
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">cf_license_nbr : String
+    <br/>license number given by issuing agency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">state_reg_nbr : String
+    <br/>State Registration number of vessel. If no vessel used, provide &#x27;FROM_SHORE&#x27;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coast_guard_nbr : String
+    <br/>Coast Guard Number/Hull Number of vessel.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">sector : String
+    <br/>sector is a trip type value for DNF reports. for COMM_FLAG use sector &#x3D; &#x27;C&#x27; and for FH_FLAG would include (\&quot;Charter\&quot; and \&quot;Headboat\&quot;) use sector &#x3D; &#x27;F&#x27;. The sector is a required value for SERO.
+  </li>
+</ul>
